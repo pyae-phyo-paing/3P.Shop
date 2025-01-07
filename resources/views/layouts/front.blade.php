@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="apple-touch-icon" href="{{asset('front-assets/assets/img/apple-icon.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('front-assets/assets/img/favicon.ico')}}">
 
     <link rel="stylesheet" href="{{asset('front-assets/assets/css/bootstrap.min.css')}}">
@@ -23,6 +23,10 @@ TemplateMo 559 Zay Shop
 https://templatemo.com/tm-559-zay-shop
 
 -->
+
+<!-- Slick -->
+<link rel="stylesheet" type="text/css" href="{{asset('front-assets/assets/css/slick.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('front-assets/assets/css/slick-theme.css')}}">
 </head>
 
 <body>
@@ -228,6 +232,8 @@ https://templatemo.com/tm-559-zay-shop
     <script src="{{asset('front-assets/assets/js/templatemo.js')}}"></script>
     <script src="{{asset('front-assets/assets/js/custom.js')}}"></script>
     <!-- End Script -->
+    <script src="{{asset('front-assets/assets/js/slick.min.js')}}"></script>
+    @yield('script')
 </body>
 
 </html>
