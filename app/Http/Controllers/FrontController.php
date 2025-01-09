@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -13,7 +14,8 @@ class FrontController extends Controller
 
     public function shops()
     {
-        return view('front.shop');
+        $products = Product::orderBy('id')->paginate(6);
+        return view('front.shop',compact('products'));
     }
 
     public function about()

@@ -17,7 +17,16 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'voucher_no' => $this->faker->ean13,
+            'total' => $this->faker->isbn10,
+            'qty' => $this->faker->ean8,
+            'payment_slip' => $this->faker->imageUrl,
+            'status' => $this->faker->randomElement(['active','inactive','pending']),
+            'address' => $this->faker->state,
+            'note' => $this->faker->word,
+            'product_id' =>rand(1,10),
+            'user_id' =>rand(1,2),
+            'payment_id' =>rand(1,10),
         ];
     }
 }

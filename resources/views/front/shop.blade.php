@@ -68,10 +68,12 @@
                     </div>
                 </div>
                 <div class="row">
+                    @foreach ($products as $product)
+
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="{{asset('front-assets/assets/img/shop_01.jpg')}}">
+                                <img class="card-img rounded-0 img-fluid" src="{{$product->image}}">
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
@@ -81,7 +83,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
+                                <a href="shop-single.html" class="h3 text-decoration-none">{{$product->name}}</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li>M/L/X/XL</li>
                                     <li class="pt-2">
@@ -101,11 +103,14 @@
                                         <i class="text-muted fa fa-star"></i>
                                     </li>
                                 </ul>
-                                <p class="text-center mb-0">$250.00</p>
+                                <p class="text-center mb-0">{{$product->price}}</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
+                    </div>  
+
+                    @endforeach
+                    
+                    {{-- <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
                                 <img class="card-img rounded-0 img-fluid" src="{{asset('front-assets/assets/img/shop_02.jpg')}}">
@@ -400,19 +405,20 @@
                                 <p class="text-center mb-0">$250.00</p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
-                        <li class="page-item disabled">
-                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>
+                        <li>{{$products->links()}}</li>
+                        {{-- <li class="page-item disabled">
+                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">{{$products->links()}}</a>
                         </li>
-                        <li class="page-item">
+                        {{-- <li class="page-item">
                             <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#">2</a>
                         </li>
                         <li class="page-item">
                             <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="#">3</a>
-                        </li>
+                        </li> --}} 
                     </ul>
                 </div>
             </div>
