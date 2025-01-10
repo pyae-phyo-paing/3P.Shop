@@ -1,45 +1,66 @@
 @extends('layouts.admin')
 @section('content')
+
+    <div class="container mt-5">
+        <!-- Page Header -->
+        <div class="my-3">
+            <h1 class="mt-4 d-inline">Categories</h1>
+            <a href="" class="btn btn-primary float-end">+ Create New</a>
+        </div>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item active">3P.Shop</li>
+        </ol>
     
-    <div class="container my-4">
-        <h2 class="text-center mb-4">Categories Table</h2>
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
+        <!-- Category Table -->
+        <div class="card">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Category List</h5>
+          </div>
+          <div class="card-body p-0">
+            <table class="table table-bordered mb-0">
+              <thead class="table-light">
                 <tr>
-                    <th>#</th>
-                    <th>Category Name</th>
-                    <th>Description</th>
-                    <th>Parent Category</th>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Actions</th>
                 </tr>
-            </thead>
-            <tbody>
+              </thead>
+              <tfoot class="table-light">
                 <tr>
-                    <td>1</td>
-                    <td>Electronics</td>
-                    <td>Devices and gadgets</td>
-                    <td>None</td>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Actions</th>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Mobiles</td>
-                    <td>Smartphones and accessories</td>
-                    <td>Electronics</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Clothing</td>
-                    <td>Men and Women fashion</td>
-                    <td>None</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Laptops</td>
-                    <td>Work and gaming laptops</td>
-                    <td>Electronics</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+              </tfoot>
+              <tbody>
+                <!-- Example Rows -->
+                @php
+                    $j = 1;
+                @endphp
+                @foreach ($categories as $category)
+                  <tr>
+                    <td>{{$j++}}</td>
+                    <td>{{$category->name}}</td>
+                    <td>{{$category->description}}</td>
+                    <td>
+                      <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                      <form action="#" method="POST" class="d-inline">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                @endforeach
+                
+                <!-- Add more rows dynamically from backend -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     
 @endsection
     
