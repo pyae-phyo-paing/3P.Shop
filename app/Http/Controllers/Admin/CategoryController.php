@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -22,15 +23,19 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.category.create');
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $category = Category::create($request->all());
+        $category->save();
+        return redirect()->route('backend.category.index');
     }
 
     /**

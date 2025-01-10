@@ -5,7 +5,7 @@
         <!-- Page Header -->
         <div class="my-3">
             <h1 class="mt-4 d-inline">Categories</h1>
-            <a href="" class="btn btn-primary float-end">+ Create New</a>
+            <a href="{{route('backend.category.create')}}" class="btn btn-primary float-end">+ Create New</a>
         </div>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
@@ -47,10 +47,7 @@
                     <td>{{$category->description}}</td>
                     <td>
                       <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                      <form action="#" method="POST" class="d-inline">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="button" class="btn btn-sm btn-danger">Delete</button>
-                      </form>
+                      <button type="button" class="btn btn-sm btn-danger delete" data-id="{{$category->id}}">Delete</button>
                     </td>
                   </tr>
                 @endforeach
@@ -61,6 +58,41 @@
           </div>
         </div>
       </div>
-    
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+          $('tbody').on('click','.delete',function(){
+            // alert('Hello');
+            let id = $(this).data('id');
+            // console.log(id);
+
+            $('#deleteModal').modal('show');
+            
+          })
+        })
+    </script>
 @endsection
     
