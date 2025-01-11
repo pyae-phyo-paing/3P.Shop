@@ -48,13 +48,21 @@
                                 Dashboard
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link" href="{{route('backend.dashboard')}}">
+                            <a class="nav-link" href="{{route('backend.product.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Product
                             </a>
                             <a class="nav-link" href="{{route('backend.category.index')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Category
+                            </a>
+                            <a class="nav-link" href="{{route('backend.brand.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Brand
+                            </a>
+                            <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Payment
                             </a>
                             <a class="nav-link" href="{{route('backend.dashboard')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

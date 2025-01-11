@@ -15,6 +15,8 @@ Route::get('/shop-single/{id}', [App\Http\Controllers\FrontController::class, 's
 Route::group(['prefix'=>'backend','as'=>'backend.'],function(){
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resource('category',App\Http\Controllers\Admin\CategoryController::class);
+    Route::resource('brand',App\Http\Controllers\Admin\BrandController::class);
+    Route::resource('product',App\Http\Controllers\Admin\ProductController::class);
 });
 
 Auth::routes();
