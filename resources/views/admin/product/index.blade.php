@@ -5,7 +5,7 @@
         <!-- Page Header -->
         <div class="my-3 px-3">
             <h1 class="mt-4 d-inline">Products</h1>
-            <a href="#" class="btn btn-primary float-end">+ Create New</a>
+            <a href="{{route('backend.product.create')}}" class="btn btn-primary float-end">+ Create New</a>
         </div>
         <ol class="breadcrumb mb-4 px-3">
             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
