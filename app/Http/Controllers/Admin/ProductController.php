@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -24,15 +26,25 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.product.create',compact('categories'));
+        $brands = Brand::all();
+        return view('admin.product.create',compact('categories','brands'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $product = Product::create($request->all());
+
+        $file_name = time().'.'.$request->image->extension();
+        $upload = $request->image->move(public_path('images/product/'),$file_name);
+        if($upload){
+            $product->image = "/images/product/".$file_name;
+        }
+
+        $product->save();
+        return redirect()->route('backend.product.index');
     }
 
     /**

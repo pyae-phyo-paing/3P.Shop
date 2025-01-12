@@ -1,0 +1,8 @@
+.preview {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 300px;
+    max-height: 300px;
+    border: 1px solid #ddd;
+    display: none; /* Hide initially */
+}

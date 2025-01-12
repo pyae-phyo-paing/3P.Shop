@@ -61,8 +61,8 @@
                     <td>{{$product->price}}</td>
                     <td>{{$product->discount}}</td>
                     <td>{{$product->instock}}</td>
-                    <td>{{$product->brand_id}}</td>
-                    <td>{{$product->category_id}}</td>
+                    <td>{{$product->brand->name}}</td>
+                    <td>{{$product->category->name}}</td>
                     <td>
                       <a href="#" class="btn btn-sm btn-warning">Edit</a>
                       <button type="button" class="btn btn-sm btn-danger delete" data-id="{{$product->id}}">Delete</button>
