@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PaymentRequest;
+use App\Http\Requests\PaymentUpdateRequest;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 
@@ -62,9 +63,23 @@ class PaymentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PaymentUpdateRequest $request, string $id)
     {
-        //
+        $payment = Payment::find($id);
+        $payment->update($request->all());
+        
+        if($request->hasFile('logo')){
+            $file_name = time().'.'.$request->logo->extension();
+            $upload = $request->logo->move(public_path('images/payment/'),$file_name);
+            if($upload){
+                $payment->logo = "/images/payment/".$file_name;
+            }
+        }else{
+            $payment->logo = $request->old_logo;
+        }
+
+        $payment->save();
+        return redirect()->route('backend.payment.index');
     }
 
     /**

@@ -42,10 +42,10 @@
                             </div>
                             <div class="tab-pane fade" id="new_logo-tab-pane" role="tabpanel" aria-labelledby="new_logo-tab" tabindex="0">
                                 <img id="previewImage" class="preview" alt="Selected Image Preview">
-                                <input type="file" class="form-control my-3 @error('image') is-invalid @enderror" accept="image/*" id="imageUpload" name="image" value="{{old('image')}}">
+                                <input type="file" class="form-control my-3 @error('logo') is-invalid @enderror" accept="image/*" id="imageUpload" name="logo" value="{{old('logo')}}">
                             </div>
                           </div>
-                        @error('image')
+                        @error('logo')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
