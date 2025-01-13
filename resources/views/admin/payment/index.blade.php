@@ -4,8 +4,8 @@
     <div class="container mt-5">
         <!-- Page Header -->
         <div class="my-3 px-3">
-            <h1 class="mt-4 d-inline">Products</h1>
-            <a href="{{route('backend.product.create')}}" class="btn btn-primary float-end">+ Create New</a>
+            <h1 class="mt-4 d-inline">Payments</h1>
+            <a href="{{route('backend.payment.create')}}" class="btn btn-primary float-end">+ Create New</a>
         </div>
         <ol class="breadcrumb mb-4 px-3">
             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
@@ -15,35 +15,23 @@
         <!-- Category Table -->
         <div class="card">
           <div class="card-header bg-light">
-            <h5 class="mb-0"><span><i class="fa-solid fa-table"></i></span> Product List</h5>
+            <h5 class="mb-0"><span><i class="fa-solid fa-table"></i></span> Payment List</h5>
           </div>
           <div class="card-body p-0">
             <table class="table table-bordered mb-0">
               <thead class="table-light">
                 <tr>
                   <th>#</th>
-                  <th>Code No.</th>
-                  <th>Name</th>
-                  <th>Image</th>
-                  <th>Price</th>
-                  <th>Discount</th>
-                  <th>Instock</th>
-                  <th>Brand Name</th>
-                  <th>Category Name</th>
+                  <th>Payment Method</th>
+                  <th>Logo</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tfoot class="table-light">
                 <tr>
                     <th>#</th>
-                    <th>Code No.</th>
-                    <th>Name</th>
-                    <th>Image</th>
-                    <th>Price</th>
-                    <th>Discount</th>
-                    <th>Instock</th>
-                    <th>Brand Name</th>
-                    <th>Category Name</th>
+                    <th>Payment Method</th>
+                    <th>Logo</th>
                     <th>Actions</th>
                 </tr>
               </tfoot>
@@ -52,20 +40,14 @@
                 @php
                     $j = 1;
                 @endphp
-                @foreach ($products as $product)
+                @foreach ($payments as $payment)
                   <tr>
                     <td>{{$j++}}</td>
-                    <td>{{$product->code_no}}</td>
-                    <td>{{$product->name}}</td>
-                    <td><img src="{{$product->image}}" alt="" width="50px"></td>
-                    <td>{{$product->price}}</td>
-                    <td>{{$product->discount}}</td>
-                    <td>{{$product->instock}}</td>
-                    <td>{{$product->brand->name}}</td>
-                    <td>{{$product->category->name}}</td>
+                    <td>{{$payment->payment_method}}</td>
+                    <td><img src="{{$payment->logo}}" alt="" width="50px"></td>
                     <td>
-                      <a href="{{route('backend.product.edit',$product->id)}}" class="btn btn-sm btn-warning">Edit</a>
-                      <button type="button" class="btn btn-sm btn-danger delete" data-id="{{$product->id}}">Delete</button>
+                      <a href="{{route('backend.payment.edit',$payment->id)}}" class="btn btn-sm btn-warning">Edit</a>
+                      <button type="button" class="btn btn-sm btn-danger delete" data-id="{{$payment->id}}">Delete</button>
                     </td>
                   </tr>
                 @endforeach
@@ -73,7 +55,6 @@
                 <!-- Add more rows dynamically from backend -->
               </tbody>
             </table>
-            <span class="float-end p-2">{{$products->links()}}</span>
           </div>
         </div>
       </div>
@@ -113,7 +94,7 @@
             // console.log(id);
 
             $('#deleteModal').modal('show');
-            $('#deleteForm').attr('action',`product/${id}`);
+            $('#deleteForm').attr('action',`payment/${id}`);
             
           })
         })

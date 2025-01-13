@@ -17,6 +17,7 @@ Route::group(['prefix'=>'backend','as'=>'backend.'],function(){
     Route::resource('category',App\Http\Controllers\Admin\CategoryController::class);
     Route::resource('brand',App\Http\Controllers\Admin\BrandController::class);
     Route::resource('product',App\Http\Controllers\Admin\ProductController::class);
+    Route::resource('payment',App\Http\Controllers\Admin\PaymentController::class);
 });
 
 Auth::routes();

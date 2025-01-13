@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -60,15 +61,33 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::find($id);
+        $categories = Category::all();
+        $brands = Brand::all();
+        return view('admin.product.edit',compact('product','categories','brands'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductUpdateRequest $request, string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->update($request->all());
+
+        if($request->hasFile('image')){
+            $file_name = time().'.'.$request->image->extension();
+            $upload = $request->image->move(public_path('images/product/'),$file_name);
+            if($upload){
+                $product->image = "/images/product/".$file_name;
+            }
+        }else{
+            $product->image = $request->old_image;
+        }
+        
+         $product->save();
+         return redirect()->route('backend.product.index');
+        
     }
 
     /**
@@ -76,6 +95,8 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->route('backend.product.index');
     }
 }
