@@ -7,13 +7,14 @@
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="3"></li>
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="{{asset('front-assets/./assets/img/banner_img_07.jpg')}}" alt="">
+                            <img class="img-fluid banner_img" src="{{asset('front-assets/./assets/img/banner_img_08.png')}}" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
@@ -32,15 +33,14 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="{{asset('front-assets/./assets/img/banner_img_02.jpg')}}" alt="">
+                            <img class="img-fluid" src="{{asset('front-assets/./assets/img/men_banner_img_01.png')}}" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">Proident occaecat</h1>
-                                <h3 class="h2">Aliquip ex ea commodo consequat</h3>
+                                <h1 class="h1">3P.Shop</h1>
+                                <h3 class="h2">Choose your favorite style for smart and modern fashion</h3>
                                 <p>
-                                    You are permitted to use this Zay CSS template for your commercial websites. 
-                                    You are <strong>not permitted</strong> to re-distribute the template ZIP file in any kind of template collection websites.
+                                    To dress smartly and enjoy the beauty of nature, own trendy fashion from <strong>3P.Shop</strong>!
                                 </p>
                             </div>
                         </div>
@@ -51,15 +51,32 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/banner_img_03.jpg" alt="">
+                            <img class="img-fluid" src="{{asset('front-assets/./assets/img/lady_banner_img_01.png')}}" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">Repr in voluptate</h1>
-                                <h3 class="h2">Ullamco laboris nisi ut </h3>
+                                <h1 class="h1">3P.Shop</h1>
+                                <h3 class="h2">Choose your favorite to beautify your fashion style</h3>
                                 <p>
-                                    We bring you 100% free CSS templates for your websites. 
-                                    If you wish to support TemplateMo, please make a small contribution via PayPal or tell your friends about our website. Thank you.
+                                    Buy lady fashion from <strong>3P.Shop</strong>, wear it beautifully and shape the life of a woman. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="{{asset('front-assets/./assets/img/kid_banner_img_01.png')}}" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1">3P.Shop</h1>
+                                <h3 class="h2">Choose the best for your child's fashion</h3>
+                                <p>
+                                    To make your child's future bright, to make everything perfect, to make people look beautiful, order baby fashion at <strong> 3P.Shop</strong>
                                 </p>
                             </div>
                         </div>
@@ -81,10 +98,9 @@
     <section class="container py-5">
         <div class="row text-center pt-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Categories of The Month</h1>
+                <h1 class="h1">Get Your The Best Choice</h1>
                 <p>
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
+                    Let's shop at <strong>3P.Shop</strong> to beautify your daily life, to have a brighter future, to interest everyone who sees it, to complete your life and meet the needs of life.
                 </p>
             </div>
         </div>
