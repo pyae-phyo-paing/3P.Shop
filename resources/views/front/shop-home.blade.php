@@ -21,7 +21,7 @@
                                 <h1 class="h1 text-success"> 3P.Shop</h1>
                                 <h3 class="h2">Pick up a variety of Trandly Fashion</h3>
                                 <p>
-                                    Get very smart men's fashion, very beautiful lady's fashion, very cute kids' fashion at 3P.Shop.
+                                    Get very smart men's fashion, very beautiful lady's fashion, very cute kids' fashion at <strong>3P.Shop</strong>.
                                     
                                 </p>
                             </div>
@@ -106,18 +106,18 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="{{asset('front-assets/./assets/img/category_img_01.jpg')}}" class="rounded-circle img-fluid border"></a>
-                <h5 class="text-center mt-3 mb-3">Watches</h5>
+                <a href="#"><img src="{{asset('front-assets/./assets/img/men_fashion_menu_img_03.jpg')}}" class="rounded-circle img-fluid border"></a>
+                <h5 class="text-center mt-3 mb-3">Men Fashions</h5>
                 <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="{{asset('front-assets/./assets/img/category_img_02.jpg')}}" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Shoes</h2>
+                <a href="#"><img src="{{asset('front-assets/./assets/img/woman_fashion_menu_img_01.jpg')}}" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Woman Fashions</h2>
                 <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="{{asset('front-assets/./assets/img/category_img_03.jpg')}}" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
+                <a href="#"><img src="{{asset('front-assets/./assets/img/kids_fashion_menu_img_03.jpg')}}" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Kids Fashions</h2>
                 <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
             </div>
         </div>
@@ -130,10 +130,9 @@
         <div class="container py-5">
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Featured Product</h1>
+                    <h1 class="h1">Trandy Fashions</h1>
                     <p>
-                        Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident.
+                        Change your style by wearing trendy fashions from <strong>3P.Shop</strong>. Buy and wear trendy fashions to popularize your style.
                     </p>
                 </div>
             </div>
@@ -141,7 +140,7 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="{{route('shop-single',12)}}">
-                            <img src="{{asset('front-assets/./assets/img/feature_prod_01.jpg')}}" class="card-img-top" alt="...">
+                            <img src="{{asset('front-assets/./assets/img/trandly_men_fashion_img_02.jpg')}}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -154,9 +153,9 @@
                                 </li>
                                 <li class="text-muted text-right">$240.00</li>
                             </ul>
-                            <a href="{{route('shop-single',12)}}" class="h2 text-decoration-none text-dark">Gym Weight</a>
+                            <a href="{{route('shop-single',12)}}" class="h2 text-decoration-none text-dark">Minimal yet bold</a>
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
+                                Step into a world where less is more.Where sleek design meets daring confidence.Our "Minimal Yet Bold" collection redefines elegance—clean lines, striking accents, and timeless style.
                             </p>
                             <p class="text-muted">Reviews (24)</p>
                         </div>
@@ -165,7 +164,7 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="{{route('shop-single',12)}}">
-                            <img src="{{asset('front-assets/./assets/img/feature_prod_02.jpg')}}" class="card-img-top" alt="...">
+                            <img src="{{asset('front-assets/./assets/img/trandly_woman_fashion_img_01.jpg')}}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -178,9 +177,9 @@
                                 </li>
                                 <li class="text-muted text-right">$480.00</li>
                             </ul>
-                            <a href="{{route('shop-single',12)}}" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
+                            <a href="{{route('shop-single',12)}}" class="h2 text-decoration-none text-dark">Effortless Street Style</a>
                             <p class="card-text">
-                                Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
+                                Stay cool, stay chic.Turn heads effortlessly with our perfect blend of comfort and style.
                             </p>
                             <p class="text-muted">Reviews (48)</p>
                         </div>
@@ -189,7 +188,7 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="{{route('shop-single',12)}}">
-                            <img src="{{asset('front-assets/./assets/img/feature_prod_03.jpg')}}" class="card-img-top" alt="...">
+                            <img src="{{asset('front-assets/./assets/img/trandly_kids_fashion_img_01.jpg')}}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -202,9 +201,9 @@
                                 </li>
                                 <li class="text-muted text-right">$360.00</li>
                             </ul>
-                            <a href="{{route('shop-single',12)}}" class="h2 text-decoration-none text-dark">Summer Addides Shoes</a>
+                            <a href="{{route('shop-single',12)}}" class="h2 text-decoration-none text-dark">Summer Vacation Style</a>
                             <p class="card-text">
-                                Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
+                                Cool linen shirts, playful printed shorts, and trendy accessories—perfect for beach days and sunny adventures!
                             </p>
                             <p class="text-muted">Reviews (74)</p>
                         </div>
