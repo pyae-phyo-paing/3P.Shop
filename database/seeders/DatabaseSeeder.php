@@ -26,9 +26,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         Brand::factory(10)->create();
         Category::factory(10)->create();
-        Product::factory(10)->create();
-        Payment::factory(10)->create();
-        Order::factory(10)->create();
+        Product::factory(150)->create();
+        Payment::factory(100)->create();
+        Order::factory(100)->create();
         // User::factory(10)->create();
 
         

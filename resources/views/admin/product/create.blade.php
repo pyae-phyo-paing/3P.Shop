@@ -57,10 +57,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="instock" class="form-label">Instock</label>
-                            <select name="instock" id="" class="form-select @error('instock') is-invalid @enderror">
-                                <option value="1" {{old('instock') == '1' ? 'selected':'';}}>Yes</option>
-                                <option value="0" {{old('instock') == '0' ? 'selected':'';}}>No</option>
-                            </select>
+                        <input type="text" class="form-control @error('instock') is-invalid @enderror" id="instock" name="instock" value="{{old('instock')}}">
                         @error('instock')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

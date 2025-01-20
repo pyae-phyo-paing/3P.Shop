@@ -19,6 +19,7 @@ class Order extends Model
         'status',
         'address',
         'note',
+        'product_size',
         'product_id',
         'user_id',
         'payment_id',

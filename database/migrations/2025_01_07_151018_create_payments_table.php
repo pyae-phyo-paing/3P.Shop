@@ -13,8 +13,25 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->string('voucher_no');
             $table->string('payment_method');
-            $table->string('logo');
+            $table->string('qty');
+            $table->decimal('total', 15, 2);
+            $table->string('status');
+            $table->string('product_size');
+            $table->string('payment_slip');
+            $table->string('address');
+            $table->longText('note')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')
+                    ->references('id')
+                    ->on('products')
+                    ->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

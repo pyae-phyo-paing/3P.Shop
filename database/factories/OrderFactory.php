@@ -24,6 +24,7 @@ class OrderFactory extends Factory
             'status' => $this->faker->randomElement(['active','inactive','pending']),
             'address' => $this->faker->state,
             'note' => $this->faker->word,
+            'product_size' => $this->faker->randomElement(['xl','M','L']),
             'product_id' =>rand(1,10),
             'user_id' =>rand(1,2),
             'payment_id' =>rand(1,10),

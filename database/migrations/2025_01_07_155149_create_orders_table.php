@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('payment_slip');
             $table->string('status');
             $table->string('address');
-            $table->longText('note');
+            $table->longText('note')->nullable();
+            $table->string('product_size');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')
                     ->references('id')

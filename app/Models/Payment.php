@@ -12,7 +12,16 @@ class Payment extends Model
     use SoftDeletes;
     protected $table = 'payments';
     protected $fillable = [
+        'voucher_no',
         'payment_method',
-        'logo',
+        'qty',
+        'total',
+        'status',
+        'product_size',
+        'payment_slip',
+        'address',
+        'note',
+        'user_id',
+        'product_id',
     ];
 }

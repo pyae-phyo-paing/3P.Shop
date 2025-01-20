@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->ean13,
             'discount' => $this->faker->ean8,
             'image' => $this->faker->imageUrl,
-            'instock' =>rand(0,1),
+            'instock' =>$this->faker->numberBetween(0, 100),
             'description' => $this->faker->paragraph,
             'brand_id' =>rand(1,5),
             'category_id'=>rand(1,10),

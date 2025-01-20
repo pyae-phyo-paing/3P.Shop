@@ -72,6 +72,6 @@ class BrandController extends Controller
     {
         $brand = Brand::find($id);
         $brand->delete();
-        return redirect()->route('backend.brand.index');
+        return redirect()->back();
     }
 }
