@@ -97,6 +97,6 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->delete();
-        return redirect()->route('backend.product.index');
+        return redirect()->back();
     }
 }
