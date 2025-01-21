@@ -54,8 +54,10 @@ class FrontController extends Controller
         return view('front.contact');
     }
 
-    public function shopSingle($id)
+    public function shopSingle($id) 
     {
-        return view('front.shop-single');
+        $product= Product::find($id);
+
+        return view('front.shop-single',compact('product'));
     }
 }
