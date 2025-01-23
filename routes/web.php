@@ -12,6 +12,11 @@ Route::get('contact', [App\Http\Controllers\FrontController::class, 'contact'])-
 
 Route::get('/shop-single/{id}', [App\Http\Controllers\FrontController::class, 'shopSingle'])->name('shop-single');
 
+Route::get('/brand/{brandName}', [App\Http\Controllers\FrontController::class, 'showProductByBrand'])->name('showProductByBrand');
+
+
+
+
 Route::group(['prefix'=>'backend','as'=>'backend.'],function(){
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resource('category',App\Http\Controllers\Admin\CategoryController::class);

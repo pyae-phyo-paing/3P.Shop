@@ -41,6 +41,7 @@ class FrontController extends Controller
         ->pluck('brand.name')
         ->unique();
 
+
         return view('front.shop',compact('products','menbrands','womenbrands','kidbrands'));
     }
 
@@ -60,4 +61,27 @@ class FrontController extends Controller
 
         return view('front.shop-single',compact('product'));
     }
+
+    
+
+    public function showProductByBrand($brandName)
+    {
+        $brands = Brand::all();
+
+        // Brand name နဲ့ Brand ကို ရှာပါ products က Brand Model မှာ ထည့်ထားတဲ့ function ထည့်ထားတာ
+        $brand = Brand::where('name', $brandName)->with('products')->first();
+
+        if ($brand) {
+        // Brand နဲ့ ချိတ်ထားတဲ့ Product တွေကို ရှာပါ
+            $products = Product::where('brand_id', $brand->id)->get();
+        } else {
+         $products = collect(); // Brand မရှိရင် empty collection ပြန်ပေးပါ
+        }
+
+        return view('front.brand-product',compact('brands','products','brandName'));
+    }
+    
+
+
+    
 }

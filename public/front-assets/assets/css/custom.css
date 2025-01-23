@@ -1,4 +1,19 @@
 /*
 Custom Css
 */
+.badge-success {
+    background-color: #28a745;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.badge-secondary {
+    background-color: none ;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
 

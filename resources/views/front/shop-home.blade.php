@@ -153,7 +153,7 @@
                                 </li>
                                 <li class="text-muted text-right">$240.00</li>
                             </ul>
-                            <a href="{{route('shop-single',12)}}" class="h2 text-decoration-none text-dark">Minimal yet bold</a>
+                            <a href="{{ url('/brand/Gucci') }}" class="h2 text-decoration-none text-dark">Gucci</a>
                             <p class="card-text">
                                 Step into a world where less is more.Where sleek design meets daring confidence.Our "Minimal Yet Bold" collection redefines elegance—clean lines, striking accents, and timeless style.
                             </p>
@@ -177,7 +177,7 @@
                                 </li>
                                 <li class="text-muted text-right">$480.00</li>
                             </ul>
-                            <a href="{{route('shop-single',12)}}" class="h2 text-decoration-none text-dark">Effortless Street Style</a>
+                            <a href="{{url('/brand/Louis Vuitton')}}" class="h2 text-decoration-none text-dark">Louis Vuitton</a>
                             <p class="card-text">
                                 Stay cool, stay chic.Turn heads effortlessly with our perfect blend of comfort and style.
                             </p>
@@ -201,7 +201,7 @@
                                 </li>
                                 <li class="text-muted text-right">$360.00</li>
                             </ul>
-                            <a href="{{route('shop-single',12)}}" class="h2 text-decoration-none text-dark">Summer Vacation Style</a>
+                            <a href="#" class="h2 text-decoration-none text-dark">Summer Vacation Style</a>
                             <p class="card-text">
                                 Cool linen shirts, playful printed shorts, and trendy accessories—perfect for beach days and sunny adventures!
                             </p>
