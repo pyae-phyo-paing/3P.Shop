@@ -14,6 +14,13 @@ Route::get('/shop-single/{id}', [App\Http\Controllers\FrontController::class, 's
 
 Route::get('/brand/{brandName}', [App\Http\Controllers\FrontController::class, 'showProductByBrand'])->name('showProductByBrand');
 
+Route::get('/brands', [App\Http\Controllers\FrontController::class, 'getBrandsWithCategory']);
+
+Route::get('/{category}/{brandname}/products', [App\Http\Controllers\FrontController::class, 'getProductsByCategoryAndBrand']);
+
+Route::get('/category/{categoryName}', [App\Http\Controllers\FrontController::class, 'getProductsByCategory'])->name('getProductsByCategory');
+
+
 
 
 

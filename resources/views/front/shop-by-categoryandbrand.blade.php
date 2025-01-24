@@ -10,13 +10,13 @@
                 <ul class="list-unstyled templatemo-accordion">
 
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="">
                             Men
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul id="collapseTwo" class="collapse list-unstyled pl-3">
                             @foreach($menbrands as $menbrand)
-                                <li><a href="{{ url('/' . 'Men' . '/' . $menbrand . '/products') }}" class="text-decoration-none px-1">{{$menbrand}}</a></li>
+                                <li><a href="{{ url('/' . 'Men' . '/' . $menbrand. '/products') }}" class="text-decoration-none px-1 badge {{ $brandname === $menbrand ? 'badge-success' : 'badge-secondary' }}">{{$menbrand}}</a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -28,7 +28,7 @@
                         </a>
                         <ul id="collapseTwo" class="collapse list-unstyled pl-3">
                             @foreach ($womenbrands as $womenbrand)
-                                <li><a href="{{ url('/' . 'Women' . '/' . $womenbrand . '/products') }}" class="text-decoration-none px-1">{{$womenbrand}}</a></li>
+                                <li><a href="{{ url('/' . 'Women' . '/' . $womenbrand . '/products') }}" class="text-decoration-none px-1 badge {{ $brandname === $womenbrand ? 'badge-success' : 'badge-secondary' }}">{{$womenbrand}}</a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -39,7 +39,7 @@
                         </a>
                         <ul id="collapseThree" class="collapse list-unstyled pl-3">
                             @foreach ($kidbrands as $kidbrand)
-                                <li><a class="text-decoration-none px-1" href="{{ url('/' . 'Kids' . '/' . $kidbrand . '/products') }}">{{$kidbrand}}</a></li>
+                                <li><a class="text-decoration-none px-1 badge {{ $brandname === $kidbrand ? 'badge-success' : 'badge-secondary' }}" href="{{ url('/' . 'Kids' . '/' . $kidbrand. '/products') }}">{{$kidbrand}}</a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -63,16 +63,9 @@
                                 <a class="h3 text-dark text-decoration-none" href="{{route('getProductsByCategory','Kids')}}">Kids's</a>
                             </li>
                         </ul>
+                        
                     </div>
-                    <div class="col-md-6 pb-4">
-                        <div class="d-flex">
-                            <select class="form-control">
-                                <option>Featured</option>
-                                <option>A to Z</option>
-                                <option>Item</option>
-                            </select>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="row">
                     @foreach ($products as $product)
@@ -120,7 +113,7 @@
                 </div>
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
-                        <li>{{$products->links()}}</li>
+                        {{$products->links()}}
                     </ul>
                 </div>
             </div>

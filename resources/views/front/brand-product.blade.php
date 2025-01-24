@@ -6,14 +6,13 @@
         <div class="row">
 
             <div class="col-lg-3 mt-5">
-                <ul class="list-unstyled templatemo-accordion">
+                <ul style="list-style-type: none;">
 
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        <a class="d-flex justify-content-between h3" href="#" style="text-decoration:none; color:black"> 
                             Brands
-                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
-                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                        <ul class="list-unstyled pl-3">
                             @foreach($brands as $brand)
                                 <li><a href="{{url('/brand/'.$brand->name)}}" class="text-decoration-none px-1 badge {{ $brand->name === $brandName ? 'badge-success' : 'badge-secondary' }}">{{$brand->name}}</a></li>
                             @endforeach
@@ -27,19 +26,11 @@
                     <div class="col-md-6">
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="#">{{$brandName}}</a>
+                                <a class="h3 text-dark text-decoration-none mr-3" href="#">{{$brandName}} Fashions</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-6 pb-4">
-                        <div class="d-flex">
-                            <select class="form-control">
-                                <option>Featured</option>
-                                <option>A to Z</option>
-                                <option>Item</option>
-                            </select>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="row">
                     @foreach ($products as $product)

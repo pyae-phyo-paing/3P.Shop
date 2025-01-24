@@ -80,8 +80,79 @@ class FrontController extends Controller
 
         return view('front.brand-product',compact('brands','products','brandName'));
     }
+
     
 
+    public function getProductsByCategoryAndBrand($categoryName, $brandname) {
+
+        $menbrands = Product::whereHas('category', function ($query) {
+            $query->where('name', 'Men'); 
+        })
+        ->with('brand') 
+        ->get()
+        ->pluck('brand.name')
+        ->unique();
+
+        $womenbrands = Product::whereHas('category', function ($query){
+            $query->where('name', 'Women');
+        })
+        ->with('brand')
+        ->get()
+        ->pluck('brand.name')
+        ->unique();
+
+        $kidbrands = Product::whereHas('category', function ($query){
+            $query->where('name', 'Kids');
+        })
+        ->with('brand')
+        ->get()
+        ->pluck('brand.name')
+        ->unique();
+
+        // Category နဲ့ Brand အလိုက် Product တွေကို ထုတ်
+        $category = Category::where('name', $categoryName)->firstOrFail();
+        $brand = Brand::where('name', $brandname)->firstOrFail();
+    
+        $products = Product::where('category_id', $category->id)
+                           ->where('brand_id', $brand->id)
+                           ->paginate(9);
+
+        return view('front.shop-by-categoryandbrand',compact('category','brand','products','menbrands','womenbrands','kidbrands','brandname'));
+    }
+
+    public function getProductsByCategory($categoryName){
+        $menbrands = Product::whereHas('category', function ($query) {
+            $query->where('name', 'Men'); 
+        })
+        ->with('brand') 
+        ->get()
+        ->pluck('brand.name')
+        ->unique();
+
+        $womenbrands = Product::whereHas('category', function ($query){
+            $query->where('name', 'Women');
+        })
+        ->with('brand')
+        ->get()
+        ->pluck('brand.name')
+        ->unique();
+
+        $kidbrands = Product::whereHas('category', function ($query){
+            $query->where('name', 'Kids');
+        })
+        ->with('brand')
+        ->get()
+        ->pluck('brand.name')
+        ->unique();
+
+        // အဲ့ဒီ Category နဲ့ သက်ဆိုင်တဲ့ Products တွေကို ရှာ
+        $products = Product::whereHas('category', function ($query) use ($categoryName) {
+            $query->where('name', $categoryName);
+        })->paginate(9); // 10 items per page
+
+        return view('front.shop-by-category',compact('products','menbrands','womenbrands','kidbrands'));
+
+    }
 
     
 }
