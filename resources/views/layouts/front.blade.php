@@ -71,14 +71,41 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="{{route('shop-home')}}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('about')}}">About</a>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Categories
+                                </a>
+                              
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="{{route('getProductsByCategory','Men')}}">Men's Fashions</a></li>
+                                  <li><a class="dropdown-item" href="{{route('getProductsByCategory','Women')}}">Women's Fashions</a></li>
+                                  <li><a class="dropdown-item" href="{{route('getProductsByCategory','Kids')}}">Kids' Fashions</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Brands
+                                </a>
+                              
+                                <ul class="dropdown-menu">
+                                    @php 
+                                        $brands = \App\Models\Brand::all();
+                                    @endphp
+                                    @foreach ($brands as $brand)
+                                        <li><a class="dropdown-item" href="{{route('brand-list',$brand->id)}}">{{$brand->name}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('shops')}}">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('contact')}}">Contact</a>
+                            <a class="nav-link" href="{{route('about')}}">About</a>
                         </li>
+                        
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">

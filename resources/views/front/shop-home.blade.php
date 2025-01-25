@@ -93,7 +93,6 @@
     </div>
     <!-- End Banner Hero -->
 
-
     <!-- Start Categories of The Month -->
     <section class="container py-5">
         <div class="row text-center pt-3">
@@ -108,17 +107,17 @@
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="{{asset('front-assets/./assets/img/men_fashion_menu_img_03.jpg')}}" class="rounded-circle img-fluid border"></a>
                 <h5 class="text-center mt-3 mb-3">Men Fashions</h5>
-                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+                <p class="text-center"><a class="btn btn-success" href="{{route('getProductsByCategory','Men')}}">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="{{asset('front-assets/./assets/img/woman_fashion_menu_img_01.jpg')}}" class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Woman Fashions</h2>
-                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+                <p class="text-center"><a class="btn btn-success" href="{{route('getProductsByCategory','Women')}}">Go Shop</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="{{asset('front-assets/./assets/img/kids_fashion_menu_img_03.jpg')}}" class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Kids Fashions</h2>
-                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+                <p class="text-center"><a class="btn btn-success" href="{{route('getProductsByCategory','Kids')}}">Go Shop</a></p>
             </div>
         </div>
     </section>
@@ -130,13 +129,35 @@
         <div class="container py-5">
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Trandy Fashions</h1>
+                    <h1 class="h1">Trandy Brands</h1>
                     <p>
                         Change your style by wearing trendy fashions from <strong>3P.Shop</strong>. Buy and wear trendy fashions to popularize your style.
                     </p>
                 </div>
             </div>
             <div class="row">
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="{{url('/brand/Gucci')}}">
+                            <img src="{{asset('front-assets/./assets/img/gucci_brand.jpg')}}" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                            </ul>
+                            <a href="{{ url('/brand/Gucci') }}" class="h2 text-decoration-none text-dark">Gucci</a>
+                            <p class="card-text">
+                                Gucci brand is one of the best and biggest brands in the world. It is also the best product. The fashion style is also very smart.
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="{{route('shop-single',12)}}">
@@ -206,6 +227,30 @@
                                 Cool linen shirts, playful printed shorts, and trendy accessories—perfect for beach days and sunny adventures!
                             </p>
                             <p class="text-muted">Reviews (74)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="{{url('/brand/Gucci')}}">
+                            <img src="{{asset('front-assets/./assets/img/gucci_brand.jpg')}}" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">$240.00</li>
+                            </ul>
+                            <a href="{{ url('/brand/Gucci') }}" class="h2 text-decoration-none text-dark">Gucci</a>
+                            <p class="card-text">
+                                Step into a world where less is more.Where sleek design meets daring confidence.Our "Minimal Yet Bold" collection redefines elegance—clean lines, striking accents, and timeless style.
+                            </p>
+                            <p class="text-muted">Reviews (24)</p>
                         </div>
                     </div>
                 </div>

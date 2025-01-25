@@ -10,6 +10,8 @@ Route::get('about', [App\Http\Controllers\FrontController::class, 'about'])->nam
 
 Route::get('contact', [App\Http\Controllers\FrontController::class, 'contact'])->name('contact');
 
+Route::get('brandlist/{brandId}', [App\Http\Controllers\FrontController::class, 'brandlist'])->name('brand-list');
+
 Route::get('/shop-single/{id}', [App\Http\Controllers\FrontController::class, 'shopSingle'])->name('shop-single');
 
 Route::get('/brand/{brandName}', [App\Http\Controllers\FrontController::class, 'showProductByBrand'])->name('showProductByBrand');

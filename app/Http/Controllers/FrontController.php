@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
+    public function brandlist($brandId)
+    {
+        $brands = Brand::all();
+        $brand = Brand::findOrFail($brandId);
+        $brandName = $brand->name;
+        $products = $brand->products;
+        return view('front.brand-product',compact('brands','brand','brandName','products'));
+    }
+
     public function shopHome()
     {
         return view('front.shop-home');

@@ -17,3 +17,10 @@ Custom Css
     font-size: 14px;
 }
 
+.dropdown-item:focus, 
+.dropdown-item:active {
+      box-shadow: none !important;
+      outline: none !important;
+      background-color: transparent !important; /* Remove the blue background */
+      color: inherit !important; /* Keep the original text color */
+}

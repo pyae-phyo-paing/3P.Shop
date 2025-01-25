@@ -64,15 +64,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-6 pb-4">
-                        <div class="d-flex">
-                            <select class="form-control">
-                                <option>Featured</option>
-                                <option>A to Z</option>
-                                <option>Item</option>
-                            </select>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="row">
                     @foreach ($products as $product)
