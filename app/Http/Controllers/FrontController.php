@@ -163,5 +163,12 @@ class FrontController extends Controller
 
     }
 
+    public function buyingcart()
+    {
+        
+
+        return view('front.cart');
+    }
+
     
 }

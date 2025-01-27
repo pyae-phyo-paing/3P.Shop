@@ -120,7 +120,7 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{{route('buying-cart')}}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
@@ -261,6 +261,9 @@ https://templatemo.com/tm-559-zay-shop
     <script src="{{asset('front-assets/assets/js/custom.js')}}"></script>
     <!-- End Script -->
     <script src="{{asset('front-assets/assets/js/slick.min.js')}}"></script>
+    <script src="{{asset('front-assets/assets/jquery/jquery-3.7.1.min.js')}}"></script>
+    {{-- Add To Cart --}}
+    <script src="{{asset('front-assets/assets/js/add_to_cart.js')}}"></script>
     @yield('script')
 </body>
 
