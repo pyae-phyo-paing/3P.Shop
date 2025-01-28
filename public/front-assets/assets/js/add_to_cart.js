@@ -6,7 +6,8 @@ $(document).ready(function(){
 
 
     
-    $('.addToCart').click(function(){
+    $('.addToCart').click(function(event){
+        event.preventDefault();
         // alert("Hello");
         
         let id = $(this).data('id');
@@ -20,7 +21,16 @@ $(document).ready(function(){
         let size = $('#size_option').val();
         // console.log(id,name,price);
         if(!size){
-            alert('Please select a size before adding to cart!');
+            Swal.fire({
+                title: "Size Required!",
+                text: "Please select a size before adding to cart.",
+                icon: "warning",
+                confirmButtonText: "OK",
+                confirmButtonColor: "#d33",
+                background: "#f8f9fa",
+                allowOutsideClick: false, // ✨ User က Click မလုပ်မချင်း မပျောက်စေချင်
+            });
+
             return;
         }
 
@@ -60,6 +70,18 @@ $(document).ready(function(){
         localStorage.setItem('shops', itemsData);
 
         count();
+
+        setTimeout(() => {
+            Swal.fire({
+                title: "Success!",
+                text: "Your order added to Shopping Cart!",
+                icon: "success",
+                confirmButtonText: "OK",
+                confirmButtonColor: "#28a745",
+                background: "#f8f9fa",
+                allowOutsideClick: false
+            });
+        }, 1000); // **Demo: 1 Second Loading Effect**
     })
 
 

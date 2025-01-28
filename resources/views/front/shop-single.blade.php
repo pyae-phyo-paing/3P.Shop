@@ -160,7 +160,7 @@
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item size_select">Size :
-                                                <select name="size_option" id="size_option" required>
+                                                <select name="size_option" id="size_option">
                                                     <option value="" disabled selected>Select your size</option>
                                                     <option value="xl" data-size="xl">xl</option>
                                                     <option value="Medium" data-size="Medium">Medium</option>
@@ -178,7 +178,7 @@
                                                 <span class="btn btn-success" id="minus-btn">-</span>
                                             </li>
                                             <li class="list-inline-item text-right">
-                                                <input class="form-control text-center bg-secondary qty" id="var-value" type="num" value="1" style="max-width: 3rem" />
+                                                <input class="form-control text-center text-light bg-secondary qty" id="var-value" type="num" value="1" style="max-width: 3rem" />
                                             </li>
                                             <li class="list-inline-item text-right">
                                                 <span class="btn btn-success" id="plus-btn">+</span>

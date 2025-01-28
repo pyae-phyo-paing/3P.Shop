@@ -122,7 +122,7 @@ https://templatemo.com/tm-559-zay-shop
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="{{route('buying-cart')}}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark count_item">0</span>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
@@ -263,6 +263,7 @@ https://templatemo.com/tm-559-zay-shop
     
     <script src="{{asset('front-assets/assets/jquery/jquery-3.7.1.min.js')}}"></script>
     {{-- Add To Cart --}}
+    <script src="{{asset('front-assets/assets/js/sweetalert2@11.js')}}"></script>
     <script src="{{asset('front-assets/assets/js/add_to_cart.js')}}"></script>
     <script src="{{asset('front-assets/assets/js/slick.min.js')}}"></script>
     @yield('script')

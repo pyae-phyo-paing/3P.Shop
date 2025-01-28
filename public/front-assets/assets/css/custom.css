@@ -27,3 +27,23 @@ Custom Css
 
 /* Shop-single */
 
+.size_select select{
+    width: 220px; /* Box ကို ကြီးချင်ရင် ပြောင်း */
+    height: 45px; /* Box ရဲ့ အမြင့် */
+    font-size: 18px; /* Font ကြီးချင်ရင် */
+    padding: 8px; /* ထဲမှာ text နဲ့ အနားက spacing */
+    border: 2px solid #253d16; /* Border Color */
+    border-radius: 6px; /* အနားကို မျဉ်းပွိုင်းချင်ရင် */
+    background-color: #f8f8f8; /* Background Color */
+    /* 🔹 Border အရိပ် (Shadow Effect) */
+    box-shadow: 3px 3px 10px rgba(163, 241, 110, 0.2);
+
+    /* 🔹 Select လုပ်တဲ့အခါ အပြာရောင် outline မပေါ်စေဖို့ */
+    outline: none;
+}
+
+.size_select select:focus{
+    border-color: #555; /* Border Color ပြောင်း */
+    box-shadow: 3px 3px 15px rgba(93, 214, 62, 0.3); /* Shadow တိုးချင်ရင် */
+    outline: none;
+}
