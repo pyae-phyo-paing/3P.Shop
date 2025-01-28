@@ -260,10 +260,11 @@ https://templatemo.com/tm-559-zay-shop
     <script src="{{asset('front-assets/assets/js/templatemo.js')}}"></script>
     <script src="{{asset('front-assets/assets/js/custom.js')}}"></script>
     <!-- End Script -->
-    <script src="{{asset('front-assets/assets/js/slick.min.js')}}"></script>
+    
     <script src="{{asset('front-assets/assets/jquery/jquery-3.7.1.min.js')}}"></script>
     {{-- Add To Cart --}}
     <script src="{{asset('front-assets/assets/js/add_to_cart.js')}}"></script>
+    <script src="{{asset('front-assets/assets/js/slick.min.js')}}"></script>
     @yield('script')
 </body>
 

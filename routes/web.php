@@ -22,7 +22,7 @@ Route::get('/{category}/{brandname}/products', [App\Http\Controllers\FrontContro
 
 Route::get('/category/{categoryName}', [App\Http\Controllers\FrontController::class, 'getProductsByCategory'])->name('getProductsByCategory');
 
-Route::get('buyingcart', [App\Http\Controllers\FrontController::class, 'buyingcart'])->name('buying-cart');
+Route::get('/buyingcart', [App\Http\Controllers\FrontController::class, 'buyingcart'])->name('buying-cart');
 
 
 

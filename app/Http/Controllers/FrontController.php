@@ -167,7 +167,7 @@ class FrontController extends Controller
     {
         
 
-        return view('front.cart');
+       return view('front.cart');
     }
 
     

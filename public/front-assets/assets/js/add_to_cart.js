@@ -6,11 +6,8 @@ $(document).ready(function(){
 
 
     
-    $('.addToCart').click(function(e){
+    $('.addToCart').click(function(){
         // alert("Hello");
-        let sizeOption = $('#size_option option:selected');
-
-        $('#errorMessage').hide();
         
         let id = $(this).data('id');
         let name = $(this).data('name');
@@ -20,8 +17,13 @@ $(document).ready(function(){
         let qty = $('.qty').val();
         let brand = $(this).data('brand');
         let category = $(this).data('category');
-        let size = sizeOption.data('size');
+        let size = $('#size_option').val();
         // console.log(id,name,price);
+        if(!size){
+            alert('Please select a size before adding to cart!');
+            return;
+        }
+
 
         let items = {
             id : id,
