@@ -14,7 +14,6 @@
                     <th>Category</th>
                     <th>Size</th>
                     <th>Price</th>
-                    <th>Discount</th>
                     <th>Qty</th>
                     <th>Amount</th>
                 </tr>

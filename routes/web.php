@@ -33,6 +33,7 @@ Route::group(['prefix'=>'backend','as'=>'backend.'],function(){
     Route::resource('brand',App\Http\Controllers\Admin\BrandController::class);
     Route::resource('product',App\Http\Controllers\Admin\ProductController::class);
     Route::resource('payment',App\Http\Controllers\Admin\PaymentController::class);
+    Route::resource('user', App\Http\Controllers\Admin\UserController::class);
 });
 
 Auth::routes();

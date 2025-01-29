@@ -107,7 +107,6 @@ $(document).ready(function(){
                             <td>${v.category}</td>
                             <td>${v.size}</td>
                             <td>${v.price}</td>
-                            <td>${v.discount}</td>
                             <td><button style="margin-right:10px; padding:5px 5px 5px; font-size:20px;" class="btn btn-sm btn-outline-secondary max" data-key="${i}">+</button>${v.qty}<button style="margin-left:10px; padding:5px 5px 5px;font-size:20px;" class="btn btn-sm btn-outline-secondary min" data-key="${i}">-</button></td>
                             <td>${Math.round((v.price - (v.price*(v.discount/100)))*v.qty)} MMK</td>
                           </tr>`
@@ -117,7 +116,7 @@ $(document).ready(function(){
             })
 
             table += `<tr>
-                        <th colspan="9">Total</th>
+                        <th colspan="8">Total</th>
                         <td>${totalPrice} MMK</td>
                       </tr>`
 
