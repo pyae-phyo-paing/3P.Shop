@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">3P.Shop</h1>
+                                <h1 class="h1 text-success">3P.Shop</h1>
                                 <h3 class="h2">Choose your favorite style for smart and modern fashion</h3>
                                 <p>
                                     To dress smartly and enjoy the beauty of nature, own trendy fashion from <strong>3P.Shop</strong>!
@@ -55,7 +55,7 @@
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">3P.Shop</h1>
+                                <h1 class="h1 text-success">3P.Shop</h1>
                                 <h3 class="h2">Choose your favorite to beautify your fashion style</h3>
                                 <p>
                                     Buy lady fashion from <strong>3P.Shop</strong>, wear it beautifully and shape the life of a woman. 
@@ -73,7 +73,7 @@
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">3P.Shop</h1>
+                                <h1 class="h1 text-success">3P.Shop</h1>
                                 <h3 class="h2">Choose the best for your child's fashion</h3>
                                 <p>
                                     To make your child's future bright, to make everything perfect, to make people look beautiful, order baby fashion at <strong> 3P.Shop</strong>

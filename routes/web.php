@@ -27,7 +27,7 @@ Route::get('/buyingcart', [App\Http\Controllers\FrontController::class, 'buyingc
 
 
 
-Route::group(['prefix'=>'backend','as'=>'backend.'],function(){
+Route::group(['middleware'=>['auth','role:Super Admin|Admin|Staff'],'prefix'=>'backend','as'=>'backend.'],function(){
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resource('category',App\Http\Controllers\Admin\CategoryController::class);
     Route::resource('brand',App\Http\Controllers\Admin\BrandController::class);

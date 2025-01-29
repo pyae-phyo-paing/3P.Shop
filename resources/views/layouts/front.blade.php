@@ -12,11 +12,13 @@
     <link rel="stylesheet" href="{{asset('front-assets/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('front-assets/assets/css/templatemo.css')}}">
     <link rel="stylesheet" href="{{asset('front-assets/assets/css/custom.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="{{asset('front-assets/assets/css/fontawesome.min.css')}}">
 <!--
+    
     
 TemplateMo 559 Zay Shop
 
@@ -125,9 +127,12 @@ https://templatemo.com/tm-559-zay-shop
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark count_item">0</span>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                        
+                        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                          </button>
                     </a>
+                    
                 </div>
             </div>
 
@@ -151,7 +156,6 @@ https://templatemo.com/tm-559-zay-shop
             </form>
         </div>
     </div>
-
 
 
     @yield('content')

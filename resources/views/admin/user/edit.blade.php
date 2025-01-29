@@ -48,20 +48,17 @@
                             <li class="nav-item" role="presentation">
                               <button class="nav-link" id="new_profile-tab" data-bs-toggle="tab" data-bs-target="#new_profile-tab-pane" type="button" role="tab" aria-controls="new_profile-tab-pane" aria-selected="false">New</button>
                             </li>
-                          </ul>
-                          <div class="tab-content" id="myTabContent">
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="old_profile-tab-pane" role="tabpanel" aria-labelledby="old_profile-tab" tabindex="0">
                                 <img src="{{$user->profile}}" alt="" width="400px" class="mx-2 my-2">
                                 <input type="hidden" name="old_profile" id="" value="{{$user->profile}}">
                             </div>
                             <div class="tab-pane fade" id="new_profile-tab-pane" role="tabpanel" aria-labelledby="new_profile-tab" tabindex="0">
                                 <img id="previewImage" class="preview" alt="Selected Image Preview">
-                                <input type="file" class="form-control my-3 @error('profile') is-invalid @enderror" accept="image/*" id="imageUpload" name="image" value="{{old('profile')}}">
+                                <input type="file" class="form-control my-3" accept="image/*" id="imageUpload" name="profile">
                             </div>
-                          </div>
-                        @error('profile')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
@@ -83,7 +80,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                      <button type="submit" class="btn btn-primary w-100">Save</button>
+                      <button type="submit" class="btn btn-primary w-100">Update</button>
                 </form>
             </div>
 

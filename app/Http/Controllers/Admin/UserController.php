@@ -35,7 +35,7 @@ class UserController extends Controller
         $user = User::create($request->all());
 
         $file_name = time().'.'.$request->profile->extension();
-        $upload = $request->profile->move(public_path('images/user/',$file_name));
+        $upload = $request->profile->move(public_path('images/user/'),$file_name);
         if($upload){
             $user->profile = "/images/user/".$file_name;
         }
@@ -66,7 +66,22 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, string $id)
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+
+        if($request->hasFile('profile')){
+            $file_name = time().'.'.$request->profile->extension();
+            $upload = $request->profile->move(public_path('images/user/'),$file_name);
+            if($upload){
+                $user->profile = "/images/user/".$file_name;
+            }
+        }else{
+            $user->profile = $request->old_profile;
+        }
+
+        $user->save();
+        return redirect()->route('backend.user.index');
+
     }
 
     /**
