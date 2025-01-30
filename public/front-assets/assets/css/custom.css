@@ -48,3 +48,158 @@ Custom Css
     outline: none;
 }
 
+/* Signup Button */
+.signup-button button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+/* User Name Button */
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(45deg, #a8e6cf, #dcedc1);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+  }
+
+  .avatar i {
+    font-size: 20px;
+    color: #333;
+  }
+
+  .username {
+    margin-right: 10px;
+  }
+
+  .fa-chevron-down {
+    font-size: 14px;
+    color: #333;
+  }
+
+  /* Dropdown Content Style */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 0px;
+    min-width: 160px;
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+
+  .dropdown-content a:hover {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  .dropdown-content a i {
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  /* Show Dropdown Content on Hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+
+  /* Login Form */
+/* Background Gradient */
+.bg-custom {
+    background: linear-gradient(135deg, #111, #222);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Glass Effect Card */
+.glass-card {
+    width: 350px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 30px rgba(0, 255, 127, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Custom Input */
+.custom-input {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+.custom-input:focus {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 0px 10px rgba(0, 255, 127, 0.8);
+}
+
+/* Custom Button */
+.custom-btn {
+    background: linear-gradient(135deg, #4CAF50, #1B5E20);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.custom-btn:hover {
+    background: linear-gradient(135deg, #45a049, #2E7D32);
+    box-shadow: 0px 0px 15px rgba(0, 255, 127, 0.8);
+}
+
+/* Register Link Animation */
+.register-link {
+    color: #4CAF50;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.register-link:hover {
+    color: #00ff99;
+    text-shadow: 0px 0px 8px rgba(0, 255, 127, 0.8);
+}

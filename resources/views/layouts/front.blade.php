@@ -126,11 +126,33 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark count_item">0</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        
-                        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                          </button>
+                    <a class="nav-icon position-relative text-decoration-none">
+                        @guest
+                            <a href="/login" class="signup-button"><button style="background: linear-gradient(45deg, #a8e6cf, #dcedc1); color: #333; padding: 12px 24px; border: none; border-radius: 30px; font-size: 16px; font-weight: bold; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                                <i class="fas fa-user-plus"></i> Sign in
+                            </button></a>
+                        @else
+                            <div class="mt-3 dropdown">
+                                <button class="dropdown-button">
+                                <div class="avatar">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <span class="username">{{Auth::user()->name}}</span>
+                                <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+                                    <a href="{{ route('logout') }}" 
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
+                        @endguest
                     </a>
                     
                 </div>
