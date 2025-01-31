@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container my-5 py-5">
-    <h3 class="text-center py-3">My Shopping Carts</h3>
+    <h3 class="text-center py-3">Order Summary</h3>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>

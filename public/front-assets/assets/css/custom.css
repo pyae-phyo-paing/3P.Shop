@@ -1,6 +1,46 @@
 /*
 Custom Css
 */
+/* Nav Sub-Button */
+/* Brand Hover Dropdown */
+/* Brand Name (No Button Look) */
+
+.nav-dropdown-category {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.nav-dropdown-content a {
+  margin-left: 7px;
+  padding: 3px;
+  text-decoration: none;
+  display: block;
+  color: #333;
+  width: 200px;
+}
+
+.nav-dropdown-btn:hover .nav-dropdown-content {
+  display: block;
+}
+
+.brand i {
+  margin-right: 5px; /* brand နဲ့ icon ကြားမှာ နေရာနည်းနည်းချန်ထား */
+  font-size: 1em; /* icon ရဲ့ အရွယ်အစားကို ချိန်ညှိ */
+  color: #333; /* icon ရဲ့ အရောင်ကို ပြောင်းလဲ */
+}
+
+/* Button Badge */
 .badge-success {
     background-color: #28a745;
     color: #fff;
@@ -202,4 +242,61 @@ Custom Css
 .register-link:hover {
     color: #00ff99;
     text-shadow: 0px 0px 8px rgba(0, 255, 127, 0.8);
+}
+
+/* Go Shop Button Style */
+.go-shop-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #a8e6cf, #dcedc1);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Effect */
+.go-shop-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon Style */
+.go-shop-button i {
+  margin-left: 8px;
+  font-size: 18px;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+/* Icon Animation on Hover */
+.go-shop-button:hover i {
+  transform: translateX(5px);
+}
+
+/* Ripple Effect */
+.go-shop-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+}
+
+.go-shop-button:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
 }

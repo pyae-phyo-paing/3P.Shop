@@ -74,35 +74,37 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
-                                <a class="dropdown-toggle nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Categories
-                                </a>
-                              
-                                <ul class="dropdown-menu">
-                                  <li><a class="dropdown-item" href="{{route('getProductsByCategory','Men')}}">Men's Fashions</a></li>
-                                  <li><a class="dropdown-item" href="{{route('getProductsByCategory','Women')}}">Women's Fashions</a></li>
-                                  <li><a class="dropdown-item" href="{{route('getProductsByCategory','Kids')}}">Kids' Fashions</a></li>
-                                </ul>
+                                <div class="m-0 nav-dropdown-btn">
+                                    <a href="#" class="nav-dropdown-category nav-link">Categories <i class="fas fa-caret-down"></i> </a>
+                                    <div class="nav-dropdown-content">
+
+                                        <a href="{{route('getProductsByCategory','Men')}}">Men's Fashions</a>
+                                        <a href="{{route('getProductsByCategory','Women')}}">Women's Fashions</a>
+                                        <a href="{{route('getProductsByCategory','Kids')}}">Kids' Fashions</a>
+                                      
+                                    </div>
+                                </div>
                             </div>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
-                                <a class="dropdown-toggle nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Brands
-                                </a>
-                              
-                                <ul class="dropdown-menu">
-                                    @php 
-                                        $brands = \App\Models\Brand::all();
-                                    @endphp
-                                    @foreach ($brands as $brand)
-                                        <li><a class="dropdown-item" href="{{route('brand-list',$brand->id)}}">{{$brand->name}}</a></li>
-                                    @endforeach
-                                </ul>
+                                <div class="m-0 nav-dropdown-btn">
+                                    <a href="#" class="nav-dropdown-category nav-link">Brand <i class="fas fa-caret-down"></i> </a>
+                                    <div class="nav-dropdown-content">
+
+                                        @php 
+                                            $brands = \App\Models\Brand::all();
+                                        @endphp
+                                        @foreach ($brands as $brand)
+                                            <a href="{{route('brand-list',$brand->id)}}">{{$brand->name}}</a>
+                                        @endforeach
+                                      
+                                    </div>
+                                </div>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('shops')}}">Shop</a>
+                                <a class="nav-link" href="{{route('shops')}}">Shop</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('about')}}">About</a>
