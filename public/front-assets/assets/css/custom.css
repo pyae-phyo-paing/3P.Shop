@@ -300,3 +300,10 @@ Custom Css
   transform: translate(-50%, -50%) scale(1);
   opacity: 0;
 }
+
+/* Order Summary */
+/* go-to-payment-btn */
+.go-to-payment-btn{
+  display: flex;
+  justify-content: flex-end;
+}

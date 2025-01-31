@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
@@ -165,9 +166,18 @@ class FrontController extends Controller
 
     public function buyingcart()
     {
-        
-
        return view('front.cart');
+    }
+
+    public function paymentInfo()
+    {
+        if(Auth::check())
+        {
+            return view('front.payment-info');
+        }else{
+            return redirect('/login');
+        }
+        
     }
 
     
