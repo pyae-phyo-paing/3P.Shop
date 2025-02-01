@@ -29,6 +29,10 @@
                     <label class="form-label">CVV</label>
                     <input type="text" name="cvv" class="form-control border-success" placeholder="***">
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Card Owner Name</label>
+                    <input type="text" name="card_owner_name" class="form-control border-success">
+                </div>
             </div>
 
             <!-- Mobile Banking Form -->
@@ -49,10 +53,21 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Phone Number</label>
-                    <input type="text" name="phone_number" class="form-control border-success" placeholder="09xxxxxxxxx">
+                    <label class="form-label">Payment Slip</label>
+                    <input type="file" name="payment_slip" class="form-control border-success">
                 </div>
 
+            </div>
+
+            <!-- Common Inputs for All Payments -->
+            <div class="mb-3">
+                <label class="form-label">Address</label>
+                <input type="text" name="address" class="form-control border-success" placeholder="Enter your address">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Additional Note (Optional)</label>
+                <textarea name="note" class="form-control border-success" rows="3" placeholder="Any additional notes..."></textarea>
             </div>
 
             <button type="submit" class="btn btn-success w-100 mt-3">Submit Payment</button>

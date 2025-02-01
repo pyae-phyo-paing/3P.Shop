@@ -26,6 +26,8 @@ Route::get('/buyingcart', [App\Http\Controllers\FrontController::class, 'buyingc
 
 Route::get('/payment-info', [App\Http\Controllers\FrontController::class, 'paymentInfo'])->name('payment-info');
 
+Route::post('payment-submit', [App\Http\Controllers\FrontController::class, 'paymentSubmit'])->name('payment-submit');
+
 
 
 
@@ -34,8 +36,8 @@ Route::group(['middleware'=>['auth','role:Super Admin|Admin|Staff'],'prefix'=>'b
     Route::resource('category',App\Http\Controllers\Admin\CategoryController::class);
     Route::resource('brand',App\Http\Controllers\Admin\BrandController::class);
     Route::resource('product',App\Http\Controllers\Admin\ProductController::class);
-    Route::resource('payment',App\Http\Controllers\Admin\PaymentController::class);
     Route::resource('user', App\Http\Controllers\Admin\UserController::class);
+    Route::get('payments',[App\Http\Controllers\Admin\PaymentController::class, 'payments'])->name('payments');
 });
 
 Auth::routes();
