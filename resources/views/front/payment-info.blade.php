@@ -4,21 +4,21 @@
     <div class="card shadow-lg p-4" style="border-radius: 15px; background-color: #f0fff0;">
         <h2 class="text-center text-success">Payment Information</h2>
         
-        <form action="#" method="POST">
+        <form action="" enctype="multipart/form-data" id="payment-form">
             @csrf
             <div class="mb-3">
                 <label for="payment_method" class="form-label fw-bold">Choose Payment Method:</label>
                 <select id="payment_method" name="payment_method" class="form-select border-success">
                     <option value="">Select Payment Method</option>
                     <option value="visa">Visa/MasterCard</option>
-                    <option value="mobile">Mobile Banking</option>
+                    <option value="mobile banking">Mobile Banking</option>
                 </select>
             </div>
 
             <!-- Visa/MasterCard Form -->
             <div id="visa_form" class="payment-form" style="display: none;">
                 <div class="mb-3">
-                    <label class="form-label">Card Number</label>
+                    <label class="form-label" for="card_number">Card Number</label>
                     <input type="text" name="card_number" class="form-control border-success" placeholder="**** **** **** ****">
                 </div>
                 <div class="mb-3">
@@ -30,15 +30,15 @@
                     <input type="text" name="cvv" class="form-control border-success" placeholder="***">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Card Owner Name</label>
-                    <input type="text" name="card_owner_name" class="form-control border-success">
+                    <label class="form-label" for="card_holder_name">Card Owner Name</label>
+                    <input type="text" name="card_holder_name" class="form-control border-success">
                 </div>
             </div>
 
             <!-- Mobile Banking Form -->
             <div id="mobile_form" class="payment-form" style="display: none;">
                 <div class="mb-3">
-                    <label class="form-label">Mobile Banking Provider</label>
+                    <label class="form-label" for="mobile_provider">Mobile Banking Provider</label>
                     <select name="mobile_provider" class="form-select border-success" id="mobile_provider">
                         <option value="">Select Provider</option>
                         <option value="KBZ Pay">KBZ Pay</option>
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Payment Slip</label>
+                    <label class="form-label" for="payment_slip">Payment Slip</label>
                     <input type="file" name="payment_slip" class="form-control border-success">
                 </div>
 
@@ -61,16 +61,16 @@
 
             <!-- Common Inputs for All Payments -->
             <div class="mb-3">
-                <label class="form-label">Address</label>
+                <label class="form-label" for="address">Address</label>
                 <input type="text" name="address" class="form-control border-success" placeholder="Enter your address">
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Additional Note (Optional)</label>
+                <label class="form-label" for="note">Additional Note (Optional)</label>
                 <textarea name="note" class="form-control border-success" rows="3" placeholder="Any additional notes..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-success w-100 mt-3">Submit Payment</button>
+            <button type="submit" class="btn btn-success w-100 mt-3" id="payment-submit">Submit Payment</button>
         </form>
     </div>
 </div> 
@@ -84,7 +84,7 @@
             let selectedMethod = $(this).val();
             if(selectedMethod == 'visa'){
                 $('#visa_form').fadeIn();
-            } else if(selectedMethod == 'mobile'){
+            } else if(selectedMethod == 'mobile banking'){
                 $('#mobile_form').fadeIn();
             }
         });
@@ -108,6 +108,44 @@
                 $('#qr_code_section').hide();
             }
         });
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('#payment-form').on('submit',function(e){
+            e.preventDefault();
+            var formData = new FormData(this);
+            console.log(formData);
+
+            let itemstring = localStorage.getItem('shops');
+            formData.append('orderItems',itemstring);
+            //processData: false,
+            //contentType: false,
+            //ဒီနှစ်ခုက Form Data သယ်ဖို့
+
+            $.ajax({
+                type: 'POST',
+                url: "{{route('payment-submit')}}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    console.log(response);
+
+                    if(response){
+                        alert('order successful!');
+                        localStorage.clear('shops');
+                        location.href= '/';
+                    }
+                    
+                }
+
+            })
+            
+        })
     });
 </script>
 @endsection

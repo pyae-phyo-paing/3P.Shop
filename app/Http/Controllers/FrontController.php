@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Payment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -178,6 +179,54 @@ class FrontController extends Controller
             return redirect('/login');
         }
         
+    }
+
+    public function paymentSubmit(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'payment_method' => 'required',
+            'card_number' => 'nullable|required_if:payment_method,visa',
+            'card_holder_name' => 'nullable|required_if:payment_method,visa',
+            'mobile_provider' => 'nullable|required_if:payment_method,mobile',
+            'payment_slip' => 'nullable|required_if:payment_method,mobile|mimes:jpg,png,jpeg|max:2048',
+        ]);
+
+        if($request->hasFile('payment_slip')){
+            $file_name = time().'.'.$request->payment_slip->extension();
+            $upload = $request->payment_slip->move(public_path('images/payment_slips/'),$file_name);
+        }
+
+        $dataArray = json_decode($request->orderItems);
+
+        $voucher_no = "Voucher-".uniqid();
+
+        //$data နဲ့ ယူတာတေွက localStorage ထဲမှာ သိမ်းထားတဲ့ data
+        // $request နဲ့ယူတာတွေသည် input data တွေ
+        foreach ($dataArray as $data)
+        {
+            $payment = new Payment();//payment model ကို အသစ် ထည့်ဖို့ new လုပ်လိုက်တာ //အပေါ်မှာ model ကို use လုပ်ပေးရတယ်
+
+            $payment->voucher_no = $voucher_no;
+            $payment->payment_method = $request->payment_method;
+            $payment->qty = $data->qty;
+            $payment->total = $data->qty*($data->price - ($data->price*($data->discount/100)));
+            $payment->status = 'Checking';
+            $payment->product_size = $data->size;
+            $payment->category = $data->category;
+            $payment->brand = $data->brand;
+            $payment->card_number = $request->card_number;
+            $payment->card_holder_name = $request->card_holder_name;
+            $payment->mobile_provider = $request->mobile_provider;
+            $payment->payment_slip = "/images/payment_slips/".$file_name;
+            $payment->address = $request->address;
+            $payment->note = $request->note;
+            $payment->user_id = Auth::id();
+            $payment->product_id = $data->id;
+            $payment->save();
+        }
+
+        return 'Your Orders Successful';
     }
 
     
