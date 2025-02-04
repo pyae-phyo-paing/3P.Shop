@@ -136,9 +136,25 @@
                     console.log(response);
 
                     if(response){
-                        alert('order successful!');
-                        localStorage.clear('shops');
-                        location.href= '/';
+                        Swal.fire({
+                        title: 'Your Orders Successful!',
+                        html: 'Thank you for shopping with us. <br> We hope to see you again soon!',
+                        icon: 'success',
+                        confirmButtonText: 'Continue Shopping',
+                        allowOutsideClick: false, // User က Dialog အပြင်မှာ နှိပ်ရင် မပျောက်အောင်
+                        allowEscapeKey: false,    // ESC Key ကို နှိပ်လည်း မပျောက်အောင်
+                        customClass: {
+                            popup: 'custom-popup',
+                            title: 'custom-title',
+                            htmlContainer: 'custom-html-container',
+                            confirmButton: 'custom-confirm-button',
+                            icon: 'custom-icon'
+                        }
+                        }).then(() => {  // User က Confirm Button ကို နှိပ်မှ next step သွားမယ်
+                            localStorage.clear('shops'); // 'shops' ဆိုပြီး Key ကို clear မလုပ်ရဘူး
+                            location.href= '/'; // Page Redirect ကို User Confirm Button နှိပ်မှလုပ်မယ်
+                        });
+                           
                     }
                     
                 }

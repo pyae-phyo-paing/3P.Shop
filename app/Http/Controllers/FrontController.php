@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Payment;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -201,6 +202,8 @@ class FrontController extends Controller
 
         $voucher_no = "Voucher-".uniqid();
 
+        $transation_date = Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s'); // Myanmar Local Time ကို Format ပြောင်းပြီး သိမ်းမယ်
+
         //$data နဲ့ ယူတာတေွက localStorage ထဲမှာ သိမ်းထားတဲ့ data
         // $request နဲ့ယူတာတွေသည် input data တွေ
         foreach ($dataArray as $data)
@@ -221,6 +224,7 @@ class FrontController extends Controller
             $payment->payment_slip = "/images/payment_slips/".$file_name;
             $payment->address = $request->address;
             $payment->note = $request->note;
+            $payment->transation_date = $transation_date;
             $payment->user_id = Auth::id();
             $payment->product_id = $data->id;
             $payment->save();

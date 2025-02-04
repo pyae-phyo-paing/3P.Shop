@@ -307,3 +307,58 @@ Custom Css
   display: flex;
   justify-content: flex-end;
 }
+
+/* Order Successful Alert */
+/* သီးသန့် CSS prefix အသုံးပြုခြင်း */
+.custom-popup {
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9); /* Gradient light green background */
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.custom-title {
+  color: #1b5e20; /* Dark green text */
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.custom-html-container {
+  color: #2e7d32; /* Medium green text */
+  font-size: 18px;
+}
+
+.custom-confirm-button {
+  background: linear-gradient(135deg, #4caf50, #388e3c) !important; /* Gradient green button */
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 12px 30px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.custom-confirm-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.custom-icon {
+  width: 80px;
+  height: 80px;
+  margin: 20px auto;
+  border: 3px solid #4caf50;
+  border-radius: 50%;
+  background-color: #e8f5e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-icon .swal2-success-line-tip,
+.custom-icon .swal2-success-line-long {
+  background-color: #4caf50;
+}
