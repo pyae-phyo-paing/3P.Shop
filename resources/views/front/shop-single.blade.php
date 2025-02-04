@@ -179,6 +179,7 @@
                                             </li>
                                             <li class="list-inline-item text-right">
                                                 <input class="form-control text-center text-light bg-secondary qty" id="var-value" type="num" value="1" style="max-width: 3rem" />
+                                                <input type="hidden" id="available_instock" value="{{ $product->instock }}"> <!-- Product Table ထဲက Qty -->
                                             </li>
                                             <li class="list-inline-item text-right">
                                                 <span class="btn btn-success" id="plus-btn">+</span>
@@ -186,9 +187,14 @@
                                         </ul>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <span id="error-msg" style="color: red; display: none;">❌ This product is currently unavailable!</span>
+                                </div>
+
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg addToCart" name="submit" value="addtocard" data-id={{$product->id}} data-name={{$product->name}} data-price={{$product->price}} data-discount={{$product->discount}} data-brand={{$product->brand->name}} data-category={{$product->category->name}} data-image={{$product->image}}>Add To Cart</button>
+                                        <button type="submit" class="btn btn-success btn-lg addToCart" id="add_to_cart" name="submit" value="addtocard" data-id={{$product->id}} data-name={{$product->name}} data-price={{$product->price}} data-discount={{$product->discount}} data-brand={{$product->brand->name}} data-category={{$product->category->name}} data-image={{$product->image}}>Add To Cart</button>
                                     </div>
                                 </div>
                             </form>
@@ -409,6 +415,7 @@
     </script>
     <script>
         $(document).ready(function() {
+
         // Plus Button Click Event
         $("#plus-btn").click(function() {
             let qty = parseInt($("#var-value").val()); // Get current value
@@ -430,6 +437,39 @@
                 $(this).val(1); // If less than 1, reset to 1
             }
         });
+
+        $("#var-value").on("input", function() {
+            let inputQty = parseInt($(this).val()); // User ရိုက်ထည့်တဲ့ Qty
+            let availableQty = parseInt($("#available_instock").val()); // Product Table ထဲက Qty
+
+            if (inputQty > availableQty) {
+                Swal.fire({
+                icon: "error",
+                title: "Stock Not Available!",
+                text: "❌ This product is not available in the quantity you ordered!",
+                confirmButtonColor: "#d33"
+                }); // Error Message ပြမယ်
+                $("#add_to_cart").prop("disabled", true); // Button ကို Disabled လုပ်မယ်
+            } else {
+                $("#error-msg").hide(); // Stock မှန်ရင် Message ကို Hidden ပြန်လုပ်မယ်
+                $("#add_to_cart").prop("disabled", false); // Button ကို Active ပြန်လုပ်မယ်
+            }
+        });
+
+        let instock = parseInt($("#available_instock").val()); // Instock Value
+
+        if (instock === 0) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Out of Stock!",
+                    text: "❌ This product is currently unavailable.",
+                    confirmButtonColor: "#d33"
+                });
+
+                $("#error-msg").show();
+                $("#add_to_cart").prop("disabled", true); // Button ကို Disable လုပ်မယ်
+            }
+
     });
     </script>
 

@@ -189,14 +189,15 @@ class FrontController extends Controller
             'payment_method' => 'required',
             'card_number' => 'nullable|required_if:payment_method,visa',
             'card_holder_name' => 'nullable|required_if:payment_method,visa',
-            'mobile_provider' => 'nullable|required_if:payment_method,mobile',
-            'payment_slip' => 'nullable|required_if:payment_method,mobile|mimes:jpg,png,jpeg|max:2048',
+            'mobile_provider' => 'nullable|required_if:payment_method,mobile banking',
+            'payment_slip' => 'nullable|required_if:payment_method,mobile banking|mimes:jpg,png,jpeg|max:2048',
         ]);
 
         if($request->hasFile('payment_slip')){
             $file_name = time().'.'.$request->payment_slip->extension();
             $upload = $request->payment_slip->move(public_path('images/payment_slips/'),$file_name);
         }
+
 
         $dataArray = json_decode($request->orderItems);
 
@@ -208,6 +209,7 @@ class FrontController extends Controller
         // $request နဲ့ယူတာတွေသည် input data တွေ
         foreach ($dataArray as $data)
         {
+
             $payment = new Payment();//payment model ကို အသစ် ထည့်ဖို့ new လုပ်လိုက်တာ //အပေါ်မှာ model ကို use လုပ်ပေးရတယ်
 
             $payment->voucher_no = $voucher_no;
