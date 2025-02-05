@@ -196,6 +196,8 @@ class FrontController extends Controller
         if($request->hasFile('payment_slip')){
             $file_name = time().'.'.$request->payment_slip->extension();
             $upload = $request->payment_slip->move(public_path('images/payment_slips/'),$file_name);
+        }else{
+            $file_name = null;
         }
 
 
