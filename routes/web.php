@@ -24,6 +24,8 @@ Route::get('/category/{categoryName}', [App\Http\Controllers\FrontController::cl
 
 Route::get('/buyingcart', [App\Http\Controllers\FrontController::class, 'buyingcart'])->name('buying-cart');
 
+Route::post('/check-stock', [App\Http\Controllers\FrontController::class, 'checkStock'])->name('check-stock');
+
 Route::get('/payment-info', [App\Http\Controllers\FrontController::class, 'paymentInfo'])->name('payment-info');
 
 Route::post('payment-submit', [App\Http\Controllers\FrontController::class, 'paymentSubmit'])->name('payment-submit');

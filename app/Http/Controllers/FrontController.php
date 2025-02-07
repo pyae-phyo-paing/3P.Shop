@@ -171,6 +171,35 @@ class FrontController extends Controller
        return view('front.cart');
     }
 
+    public function checkStock(Request $request)
+    {
+        $cartItems = $request->cart; // Frontend မှာ Ajax နဲ့ ပို့လာတဲ့ Cart Data
+
+        foreach ($cartItems as $item) {
+            $product = Product::find($item['id']);
+
+            if (!$product) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'One of the products in your cart is no longer available.'
+                ]);
+            }
+
+            if ($item['qty'] > $product->instock) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'The quantity of ' . $product->name . ' exceeds available stock!',
+                    'product_name' => $product->name //Product Name ကို response ထည့်မယ် 
+                ]);
+            }
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Stock is available'
+        ]);
+    }
+
     public function paymentInfo()
     {
         if(Auth::check())
@@ -200,6 +229,15 @@ class FrontController extends Controller
             $file_name = null;
         }
 
+        $items = json_decode($request->orderItems, true);
+
+        foreach($items as $item){
+            $product = Product::find($item['id']);
+            if($product){
+                $product->instock -= $item['qty']; //product ထဲမှာ instock ကို လျော့ 
+                $product->save();
+            }
+        }
 
         $dataArray = json_decode($request->orderItems);
 
