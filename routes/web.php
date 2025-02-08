@@ -40,6 +40,9 @@ Route::group(['middleware'=>['auth','role:Super Admin|Admin|Staff'],'prefix'=>'b
     Route::resource('product',App\Http\Controllers\Admin\ProductController::class);
     Route::resource('user', App\Http\Controllers\Admin\UserController::class);
     Route::get('payments',[App\Http\Controllers\Admin\PaymentController::class, 'payments'])->name('payments');
+    Route::get('paid-payments',[App\Http\Controllers\Admin\PaymentController::class, 'paidPayments'])->name('paid-payments');
+    Route::get('payments/{voucher}',[App\Http\Controllers\Admin\PaymentController::class, 'detailPayment'])->name('payment-detial');
+    Route::post('payments/{voucher}',[App\Http\Controllers\Admin\PaymentController::class, 'paymentStatus'])->name('payment-status');
 });
 
 Auth::routes();

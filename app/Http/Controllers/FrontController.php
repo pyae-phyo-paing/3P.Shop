@@ -255,7 +255,7 @@ class FrontController extends Controller
             $payment->voucher_no = $voucher_no;
             $payment->payment_method = $request->payment_method;
             $payment->qty = $data->qty;
-            $payment->total = $data->qty*($data->price - ($data->price*($data->discount/100)));
+            $payment->total = (int) ceil($data->qty*($data->price - ($data->price*($data->discount/100))));
             $payment->status = 'Checking';
             $payment->product_size = $data->size;
             $payment->category = $data->category;
