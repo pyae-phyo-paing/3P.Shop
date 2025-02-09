@@ -13,6 +13,7 @@ class Order extends Model
     protected $table = 'orders';
     protected $fillable = [
         'voucher_no',
+        'payment_method',
         'total',
         'qty',
         'payment_slip',
@@ -20,8 +21,21 @@ class Order extends Model
         'address',
         'note',
         'product_size',
+        'category',
+        'brand',
+        'card_number',
+        'card_holder_name',
+        'mobile_provider',
+        'order_accept_date',
+        'order_shipping_date',
+        'order_complete_date',
         'product_id',
         'user_id',
         'payment_id',
     ];
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
 }
