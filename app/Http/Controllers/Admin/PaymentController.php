@@ -35,7 +35,7 @@ class PaymentController extends Controller
             $payment_id = array_column($voucher,'id');
             $payment_data[] = Payment::whereIn('id',$payment_id)->where('status','Paid')->first();
         }
-        return view('admin.payment.index',compact('payment-data'));
+        return view('admin.payment.index',compact('payment_data'));
     }
 
     public function detailPayment($voucher)

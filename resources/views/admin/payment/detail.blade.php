@@ -74,16 +74,16 @@
         <div class="row">
             @if ($first_payment->payment_method == 'mobile banking')
             <div class="offset-md-4 col-md-4">
-                <img src="{{$first_payment->payment_slip}}" alt="" class="img-fluid">
+                    <img src="{{$first_payment->payment_slip}}" alt="Click to Zoom" class="img-fluid" id="zoom-img" style="cursor: pointer;">
             </div>
             @endif
             
-            <form action="{{route('backend.payment-status',$first_payment->voucher_no)}}" class="d-grid gap-2 my-5" method="post" id="paidForm">
+            <form id="payment-form" action="{{route('backend.payment-status',$first_payment->voucher_no)}}" class="d-grid gap-2 my-5" method="post">
             @csrf 
             @method('put')
             @if($first_payment->status == 'Checking')
                 <input type="hidden" name="status" value="Paid">
-                <button class="btn btn-primary" type="submit" id="payButton">Paid</button>
+                <button id="paid-btn" class="btn btn-primary" type="button">Paid</button>
             @endif
             </form>
         </div>
@@ -91,23 +91,47 @@
 </div>
 </div>
 
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="" id="modal-img" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 @endsection
 @section('script')
 <script>
-    document.getElementById('payButton').addEventListener('click', function() {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "Do you want to mark this payment as Paid?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, Pay!",
-            cancelButtonText: "No, Cancel"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('paidForm').submit();
-            }
+    $(document).ready(function () {
+        $("#paid-btn").click(function () {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Do you really want to mark this as Paid?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, mark as Paid!",
+                cancelButtonText: "No, cancel!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#payment-form").submit();
+                }
+            });
+        });
+
+        $("#zoom-img").click(function () {
+            let imgSrc = $(this).attr("src");
+            $("#modal-img").attr("src", imgSrc);
+            $("#imageModal").modal("show");
         });
     });
 </script>
