@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
@@ -48,7 +51,35 @@ class PaymentController extends Controller
     public function paymentStatus(Request $request, $voucher)
     {
         // dd($request);
-        Payment::where('voucher_no',$voucher)->update(['status' => $request->status]);
+        DB::transaction(function () use($request,$voucher) {
+            //Payment Data ကို Update (status = 'Paid' ပြောင်းမယ်)
+            $payment = Payment::where('voucher_no', $voucher)->firstOrFail();
+            $payment->status = $request->status;
+            $payment->save();
+            
+            // Order Table ထဲကို Data ကို Create လုပ်မယ်
+
+            Order::create([
+                'voucher_no' =>$payment->voucher_no,
+                'payment_method' => $payment->payment_method,
+                'total' => $payment->total,
+                'qty' => $payment->qty,
+                'payment_slip' => $payment->payment_slip,
+                'status' => 'Accept',
+                'address' => $payment->address,
+                'note' => $payment->note,
+                'product_size' => $payment->product_size,
+                'category' => $payment->category,
+                'brand' => $payment->brand,
+                'card_number' => $payment->card_number,
+                'card_holder_name' => $payment->card_holder_name,
+                'mobile_provider' => $payment->mobile_provider,
+                'order_accept_date' => Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s'),
+                'product_id' => $payment->product_id,
+                'user_id' => $payment->user_id,
+                'payment_id' => $payment->id
+            ]);
+        });
         return redirect()->route('backend.payments');
     }
 }

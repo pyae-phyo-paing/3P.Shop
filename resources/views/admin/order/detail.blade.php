@@ -3,8 +3,8 @@
 
 <div class="container-fluid px-4">
 <div class="my-5">
-    <h3 class="my-4 d-inline">Payments Detail</h3>
-    <a href="{{route('backend.payments')}}" class="btn btn-sm btn-danger float-end">Cancel</a>
+    <h3 class="my-4 d-inline">Order Detail</h3>
+    <a href="{{route('backend.orders')}}" class="btn btn-sm btn-danger float-end">Cancel</a>
 </div>
 
 <div class="card mb-4">
@@ -13,24 +13,24 @@
 
         <div class="row">
             <div class="col-md-6">
-                <p>Name - {{$first_payment->user->name}} </p>
-                <p>Phone - {{$first_payment->user->phone}} </p>
-                <p>Voucher No - {{$first_payment->voucher_no}} </p>
-                @if ($first_payment->payment_method == 'visa')
-                    <p>Card Holder Name - {{$first_payment->card_holder_name}}</p> 
+                <p>Name - {{$first_order->user->name}} </p>
+                <p>Phone - {{$first_order->user->phone}} </p>
+                <p>Voucher No - {{$first_order->voucher_no}} </p>
+                @if ($first_order->payment_method == 'visa')
+                    <p>Card Holder Name - {{$first_order->card_holder_name}}</p> 
                 @else
-                    <p>Mobile Provider - {{$first_payment->mobile_provider}}</p>
+                    <p>Mobile Provider - {{$first_order->mobile_provider}}</p>
                 @endif
-                <p>Mailing Address - {{$first_payment->address}}</p>
+                <p>Mailing Address - {{$first_order->address}}</p>
             </div>
             <div class="col-md-6 text-end">
-                <p>Date - {{$first_payment->transation_date}}</p>
-                <p>Address - {{$first_payment->user->address}} </p>
-                <p>Payment Method - {{$first_payment->payment_method}} </p>
-                @if ($first_payment->payment_method == 'visa')
-                    <p>Card Number - {{$first_payment->card_number}}</p>
+                <p>Date - {{$first_order->order_accept_date}}</p>
+                <p>Address - {{$first_order->user->address}} </p>
+                <p>Payment Method - {{$first_order->payment_method}} </p>
+                @if ($first_order->payment_method == 'visa')
+                    <p>Card Number - {{$first_order->card_number}}</p>
                 @endif
-                @if ($first_payment->note)
+                @if ($first_order->note)
                     <p>Note - {{$first_payment->note}}</p>
                 @endif
             </div>
@@ -53,18 +53,18 @@
                     $total = 0;
                 @endphp
 
-                @foreach($payments as $payment)
+                @foreach($orders as $order)
                     <tr>
                         <td>{{$i++}}</td>
-                        <td>{{$payment->product->name}}</td>
-                        <td>{{$payment->product->price}}</td>
-                        <td>{{$payment->product->discount}}</td>
-                        <td>{{$payment->qty}}</td>
-                        <td>{{$payment->total}}</td>
+                        <td>{{$order->product->name}}</td>
+                        <td>{{$order->product->price}}</td>
+                        <td>{{$order->product->discount}}</td>
+                        <td>{{$order->qty}}</td>
+                        <td>{{$order->total}}</td>
                     </tr>
 
                     @php 
-                        $total += $payment->total;
+                        $total += $order->total;
                     @endphp
 
                 @endforeach
@@ -76,18 +76,21 @@
             </tbody>
         </table>
         <div class="row">
-            @if ($first_payment->payment_method == 'mobile banking')
+            @if ($first_order->payment_method == 'mobile banking')
             <div class="offset-md-4 col-md-4">
-                    <img src="{{$first_payment->payment_slip}}" alt="Click to Zoom" class="img-fluid" id="zoom-img" style="cursor: pointer;">
+                    <img src="{{$first_order->payment_slip}}" alt="Click to Zoom" class="img-fluid" id="zoom-img" style="cursor: pointer;">
             </div>
             @endif
             
-            <form id="payment-form" action="{{route('backend.payment-status',$first_payment->voucher_no)}}" class="d-grid gap-2 my-5" method="post">
+            <form id="payment-form" action="{{route('backend.order-status',$first_order->voucher_no)}}" class="d-grid gap-2 my-5" method="post">
             @csrf 
             @method('put')
-            @if($first_payment->status == 'Checking')
-                <input type="hidden" name="status" value="Paid">
-                <button id="paid-btn" class="btn btn-primary" type="button">Paid</button>
+            @if($first_order->status == 'Accept')
+                <input type="hidden" name="status" value="Shipping">
+                <button class="btn btn-primary" type="submit">Order Shipping</button>
+            @else
+                <input type="hidden" name="status" value="Complete">
+                <button class="btn btn-primary" type="submit">Order Complete</button>
             @endif
             </form>
         </div>
@@ -116,14 +119,22 @@
 <script>
     $(document).ready(function () {
         $("#paid-btn").click(function () {
+            let nextStatus = "Accept"; // Default Status
+
+            @if ($first_order->status == 'Accept')
+                nextStatus = "Ship";
+            @elseif ($first_order->status == 'Shipping')
+                nextStatus = "Complete";
+            @endif
+
             Swal.fire({
                 title: "Are you sure?",
-                text: "Do you really want to mark this as Paid?",
+                text: "Do you really want to mark this as " + nextStatus + "?" ,
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, mark as Paid!",
+                confirmButtonText: "Yes, mark as " + nextStatus + "!",
                 cancelButtonText: "No, cancel!",
             }).then((result) => {
                 if (result.isConfirmed) {

@@ -2,26 +2,18 @@
 @section('content')
 <div class="container-fluid px-4">
     <div class="row mt-3">
-        <div class="col-lg-4 my-3">
-            <h4 class="mt-4 d-inline">
-                @if(Request::is('backend/payments'))
-                 # Checking Payment List #
-                @elseif(Request::is('backend/paid-payments'))
-                 # Paid Payment List #
-                @endif
-            </h4>
-        </div>
+        
         <div class="col-lg-8 my-3">
-            <a href="#" class="btn btn-primary mx-2 float-end">Refund Payment List</a>
-            <a href="{{route('backend.paid-payments')}}" class="btn btn-success mx-2 float-end">Paid Payment List</a>
-            <a href="{{route('backend.payments')}}" class="btn btn-secondary mx-2 float-end">Checking Payment List</a>
+            <a href="#" class="btn btn-primary mx-2 float-end">Order Complete List</a>
+            <a href="#" class="btn btn-warning mx-2 float-end">Order Shipping List</a>
+            <a href="#" class="btn btn-success mx-2 float-end">Order Accept List</a>
         </div>
     </div>
     <div class="row">
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Payments
+                Orders
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -50,28 +42,28 @@
                             $i = 1;
                         @endphp
     
-                        @foreach($payment_data as $payment)
+                        @foreach($order_data as $order)
     
-                            @if($payment != null)
+                            @if($order != null)
                             <tr>
                                 <td>{{$i++}}</td>
-                                <td>{{$payment->voucher_no}}</td>
-                                <td>{{$payment->user->name}}</td>
+                                <td>{{$order->voucher_no}}</td>
+                                <td>{{$order->user->name}}</td>
                                 <td>
-                                    <span class="badge @if($payment->status == 'Checking')
+                                    <span class="badge @if($order->status == 'Accept')
                                     {{'text-bg-secondary'}}
-                                    @elseif($payment->status == 'Paid')
-                                    {{'text-bg-success'}}
-                                    @else
+                                    @elseif($order->status == 'Shipping')
+                                    {{'text-bg-warning'}}
+                                    @elseif($order->status == 'Complete')
                                     {{'text-bg-success'}}
                                     @endif
-                                    ">{{$payment->status}}</span>
+                                    ">{{$order->status}}</span>
                                 </td>
                                 <td>
-                                    {{$payment->payment_method}}
+                                    {{$order->payment_method}}
                                 </td>
                                 <td>
-                                    <a href="{{route('backend.payment-detial',$payment->voucher_no)}}" class="btn btn-sm btn-warning">Detail</a>
+                                    <a href="{{route('backend.order-detail',$order->voucher_no)}}" class="btn btn-sm btn-primary">Detail</a>
                                 </td>
                             </tr>
                             @endif

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Events\PaymentStatusUpdated;
 
 class Payment extends Model
 {
@@ -41,5 +42,5 @@ class Payment extends Model
     {
         return $this->belongsTo(Product::class);
     }
-
+    
 }
