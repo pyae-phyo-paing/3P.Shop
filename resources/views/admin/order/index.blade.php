@@ -2,7 +2,17 @@
 @section('content')
 <div class="container-fluid px-4">
     <div class="row mt-3">
-        
+        <div class="col-lg-4 my-3">
+            <h4 class="mt-4 d-inline">
+                @if(Request::is('backend/orders'))
+                 # Order Accept List #
+                @elseif(Request::is('backend/order-shipping'))
+                 # Order Shipping List #
+                @elseif(Request::is('backend/order-complete'))
+                # Order Complete List #
+                @endif
+            </h4>
+        </div>
         <div class="col-lg-8 my-3">
             <a href="{{route('backend.order-complete')}}" class="btn btn-primary mx-2 float-end">Order Complete List</a>
             <a href="{{route('backend.order-shipping')}}" class="btn btn-warning mx-2 float-end">Order Shipping List</a>
@@ -78,3 +88,4 @@
 </div>
 
 @endsection
+

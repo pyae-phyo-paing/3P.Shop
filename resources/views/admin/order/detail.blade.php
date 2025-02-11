@@ -83,15 +83,15 @@
             @endif
             
             @if ($first_order->status != 'Complete')
-                <form id="payment-form" action="{{route('backend.order-status',$first_order->voucher_no)}}" class="d-grid gap-2 my-5" method="post">
+                <form id="order-status-form" action="{{route('backend.order-status',$first_order->voucher_no)}}" class="d-grid gap-2 my-5" method="POST">
                     @csrf 
-                    @method('put')
+                    @method('PUT')
                     @if($first_order->status == 'Accept')
                         <input type="hidden" name="status" value="Shipping">
-                        <button class="btn btn-primary" type="submit">Order Shipping</button>
+                        <button class="btn btn-primary status-ok" type="button">Order Shipping</button>
                     @else
                         <input type="hidden" name="status" value="Complete">
-                        <button class="btn btn-primary" type="submit">Order Complete</button>
+                        <button class="btn btn-primary status-ok" type="button">Order Complete</button>
                     @endif
                 </form>
             @endif
@@ -121,29 +121,26 @@
 @section('script')
 <script>
     $(document).ready(function () {
-        $("#paid-btn").click(function () {
-            let nextStatus = "Accept"; // Default Status
+        $(".status-ok").click(function () {
+            let nextStatus = "{{ $first_order->status == 'Accept' ? 'Ship' : ($first_order->status == 'Shipping' ? 'Complete' : 'Accept') }}";
 
-            @if ($first_order->status == 'Accept')
-                nextStatus = "Ship";
-            @elseif ($first_order->status == 'Shipping')
-                nextStatus = "Complete";
-            @endif
+        console.log("Next Status: " + nextStatus); // Debugging Log
 
-            Swal.fire({
-                title: "Are you sure?",
-                text: "Do you really want to mark this as " + nextStatus + "?" ,
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, mark as " + nextStatus + "!",
-                cancelButtonText: "No, cancel!",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $("#payment-form").submit();
-                }
-            });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you really want to mark this as " + nextStatus + "?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, mark as " + nextStatus + "!",
+            cancelButtonText: "No, cancel!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $("#order-status-form").submit();
+            }
+        });
+    
         });
 
         $("#zoom-img").click(function () {

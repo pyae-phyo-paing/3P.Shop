@@ -83,9 +83,9 @@
             @endif
             
             @if ($first_payment->status != 'Paid')
-            <form id="payment-form" action="{{route('backend.payment-status',$first_payment->voucher_no)}}" class="d-grid gap-2 my-5" method="post">
+            <form id="payment-form" action="{{route('backend.payment-status',$first_payment->voucher_no)}}" class="d-grid gap-2 my-5" method="POST">
                 @csrf 
-                @method('put')
+                @method('PUT')
                 @if($first_payment->status == 'Checking')
                     <input type="hidden" name="status" value="Paid">
                     <button id="paid-btn" class="btn btn-primary" type="button">Paid</button>
@@ -118,6 +118,7 @@
 <script>
     $(document).ready(function () {
         $("#paid-btn").click(function () {
+            console.log("Payment Button Clicked!"); // Debugging
             Swal.fire({
                 title: "Are you sure?",
                 text: "Do you really want to mark this as Paid?",

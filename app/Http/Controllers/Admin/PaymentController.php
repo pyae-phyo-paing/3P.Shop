@@ -51,35 +51,45 @@ class PaymentController extends Controller
     public function paymentStatus(Request $request, $voucher)
     {
         // dd($request);
-        DB::transaction(function () use($request,$voucher) {
+        $redirectRoute = 'backend.payments';
+        DB::transaction(function () use($request,$voucher, &$redirectRoute) {
             //Payment Data ကို Update (status = 'Paid' ပြောင်းမယ်)
-            $payment = Payment::where('voucher_no', $voucher)->firstOrFail();
-            $payment->status = $request->status;
-            $payment->save();
+            $payment = Payment::where('voucher_no', $voucher);
+            $payment->update(['status' => $request->status]);
+            // **Fixed: Update ပြီးတဲ့ Data ကို ပြန်ယူဖို့ get() သုံးပါ**
+                $payments = $payment->get(); 
             
             // Order Table ထဲကို Data ကို Create လုပ်မယ်
 
-            Order::create([
-                'voucher_no' =>$payment->voucher_no,
-                'payment_method' => $payment->payment_method,
-                'total' => $payment->total,
-                'qty' => $payment->qty,
-                'payment_slip' => $payment->payment_slip,
-                'status' => 'Accept',
-                'address' => $payment->address,
-                'note' => $payment->note,
-                'product_size' => $payment->product_size,
-                'category' => $payment->category,
-                'brand' => $payment->brand,
-                'card_number' => $payment->card_number,
-                'card_holder_name' => $payment->card_holder_name,
-                'mobile_provider' => $payment->mobile_provider,
-                'order_accept_date' => Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s'),
-                'product_id' => $payment->product_id,
-                'user_id' => $payment->user_id,
-                'payment_id' => $payment->id
-            ]);
+            foreach($payments as $payment){
+                Order::create([
+                    'voucher_no' =>$payment->voucher_no,
+                    'payment_method' => $payment->payment_method,
+                    'total' => $payment->total,
+                    'qty' => $payment->qty,
+                    'payment_slip' => $payment->payment_slip,
+                    'status' => 'Accept',
+                    'address' => $payment->address,
+                    'note' => $payment->note,
+                    'product_size' => $payment->product_size,
+                    'category' => $payment->category,
+                    'brand' => $payment->brand,
+                    'card_number' => $payment->card_number,
+                    'card_holder_name' => $payment->card_holder_name,
+                    'mobile_provider' => $payment->mobile_provider,
+                    'order_accept_date' => Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s'),
+                    'product_id' => $payment->product_id,
+                    'user_id' => $payment->user_id,
+                    'payment_id' => $payment->id
+                ]);
+            }
+
+            if($payment->status == 'Checking'){
+                $redirectRoute = 'backend.payments';
+            }elseif($payment->status == 'Paid'){
+                $redirectRoute = 'backend.paid-payments';
+            }
         });
-        return redirect()->route('backend.payments');
+        return redirect()->route($redirectRoute);
     }
 }
