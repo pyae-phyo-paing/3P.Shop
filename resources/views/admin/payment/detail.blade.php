@@ -82,14 +82,16 @@
             </div>
             @endif
             
+            @if ($first_payment->status != 'Paid')
             <form id="payment-form" action="{{route('backend.payment-status',$first_payment->voucher_no)}}" class="d-grid gap-2 my-5" method="post">
-            @csrf 
-            @method('put')
-            @if($first_payment->status == 'Checking')
-                <input type="hidden" name="status" value="Paid">
-                <button id="paid-btn" class="btn btn-primary" type="button">Paid</button>
-            @endif
+                @csrf 
+                @method('put')
+                @if($first_payment->status == 'Checking')
+                    <input type="hidden" name="status" value="Paid">
+                    <button id="paid-btn" class="btn btn-primary" type="button">Paid</button>
+                @endif
             </form>
+            @endif
         </div>
     </div>
 </div>

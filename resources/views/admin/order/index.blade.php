@@ -4,9 +4,9 @@
     <div class="row mt-3">
         
         <div class="col-lg-8 my-3">
-            <a href="#" class="btn btn-primary mx-2 float-end">Order Complete List</a>
-            <a href="#" class="btn btn-warning mx-2 float-end">Order Shipping List</a>
-            <a href="#" class="btn btn-success mx-2 float-end">Order Accept List</a>
+            <a href="{{route('backend.order-complete')}}" class="btn btn-primary mx-2 float-end">Order Complete List</a>
+            <a href="{{route('backend.order-shipping')}}" class="btn btn-warning mx-2 float-end">Order Shipping List</a>
+            <a href="{{route('backend.orders')}}" class="btn btn-secondary mx-2 float-end">Order Accept List</a>
         </div>
     </div>
     <div class="row">

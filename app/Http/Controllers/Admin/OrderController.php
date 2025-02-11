@@ -60,22 +60,23 @@ class OrderController extends Controller
 
     public function orderStatus(Request $request, $voucher)
     {
-        DB::transaction(function () use($request,$voucher) {
-            $order = Order::where('voucher_no',$voucher)->firstOrFail();
+        // dd($voucher);
+        $redirectRoute = 'backend.orders';
+        DB::transaction(function () use($request,$voucher, &$redirectRoute) {
+            $order = Order::where('voucher_no', $voucher)->firstOrFail();
             $order->status = $request->status;
-            $order->save();
-           
-            
-            if($order->status == 'Shipping'){
-                Order::create([
-                    'order_shipping_date' => Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s'),
-                ]);
-            }elseif($order->status == 'Complete'){
-                Order::create([
-                    'order_complete_date' => Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s'),
-                ]);
+
+            if ($order->status == 'Shipping') {
+                $order->order_shipping_date = Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s');
+                $redirectRoute = 'backend.order-shipping';
+            } elseif ($order->status == 'Complete') {
+                $order->order_complete_date = Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s');
+                $redirectRoute = 'backend.order-complete';
             }
 
+            $order->save();
+
         });
+        return redirect()->route($redirectRoute);
     }
 }

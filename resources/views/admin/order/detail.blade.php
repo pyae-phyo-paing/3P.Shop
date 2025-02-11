@@ -31,7 +31,7 @@
                     <p>Card Number - {{$first_order->card_number}}</p>
                 @endif
                 @if ($first_order->note)
-                    <p>Note - {{$first_payment->note}}</p>
+                    <p>Note - {{$first_order->note}}</p>
                 @endif
             </div>
         </div>
@@ -82,17 +82,20 @@
             </div>
             @endif
             
-            <form id="payment-form" action="{{route('backend.order-status',$first_order->voucher_no)}}" class="d-grid gap-2 my-5" method="post">
-            @csrf 
-            @method('put')
-            @if($first_order->status == 'Accept')
-                <input type="hidden" name="status" value="Shipping">
-                <button class="btn btn-primary" type="submit">Order Shipping</button>
-            @else
-                <input type="hidden" name="status" value="Complete">
-                <button class="btn btn-primary" type="submit">Order Complete</button>
+            @if ($first_order->status != 'Complete')
+                <form id="payment-form" action="{{route('backend.order-status',$first_order->voucher_no)}}" class="d-grid gap-2 my-5" method="post">
+                    @csrf 
+                    @method('put')
+                    @if($first_order->status == 'Accept')
+                        <input type="hidden" name="status" value="Shipping">
+                        <button class="btn btn-primary" type="submit">Order Shipping</button>
+                    @else
+                        <input type="hidden" name="status" value="Complete">
+                        <button class="btn btn-primary" type="submit">Order Complete</button>
+                    @endif
+                </form>
             @endif
-            </form>
+            
         </div>
     </div>
 </div>
