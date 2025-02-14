@@ -362,3 +362,104 @@ Custom Css
 .custom-icon .swal2-success-line-long {
   background-color: #4caf50;
 }
+
+/* Register */
+.register-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px); /* Subtract padding-top and padding-bottom */
+  padding-top: 60px; /* Adjust based on your navbar height */
+  padding-bottom: 60px; /* Equal padding for bottom */
+  margin: 0;
+  background: linear-gradient(135deg, #1a1a1a, #000000);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+}
+.form-container {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  width: 350px;
+}
+.form-container h2 {
+  text-align: center;
+  color: #00cc44;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #00cc44;
+}
+input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #00cc44;
+  border-radius: 5px;
+  background-color: #222;
+  color: #ffffff;
+  outline: none;
+}
+input:focus {
+  border-color: #33ff77;
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+/* File Input Custom */
+.file-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.file-label {
+  background-color: #00cc44;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  transition: 0.3s;
+}
+.file-label:hover {
+  background-color: #009933;
+}
+.file-name {
+  color: #aaa;
+  font-size: 14px;
+}
+#profile-pic {
+  display: none;
+}
+/* Profile Image Preview */
+.image-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #00cc44;
+  display: none; /* မပြချင်တဲ့အတွက် default hidden */
+  margin: 10px auto;
+  object-fit: cover;
+  background-color: #333;
+}
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #00cc44;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+.submit-btn:hover {
+  background-color: #009933;
+}
+
+

@@ -31,8 +31,6 @@ Route::get('/payment-info', [App\Http\Controllers\FrontController::class, 'payme
 Route::post('payment-submit', [App\Http\Controllers\FrontController::class, 'paymentSubmit'])->name('payment-submit');
 
 
-
-
 Route::group(['middleware'=>['auth','role:Super Admin|Admin|Staff'],'prefix'=>'backend','as'=>'backend.'],function(){
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resource('category',App\Http\Controllers\Admin\CategoryController::class);

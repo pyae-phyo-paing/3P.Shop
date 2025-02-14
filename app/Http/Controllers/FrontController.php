@@ -241,7 +241,7 @@ class FrontController extends Controller
 
         $dataArray = json_decode($request->orderItems);
 
-        $voucher_no = "Voucher-".uniqid();
+        $voucher_no = uniqid();
 
         $transation_date = Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s'); // Myanmar Local Time ကို Format ပြောင်းပြီး သိမ်းမယ်
 

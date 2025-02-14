@@ -38,7 +38,7 @@
         @endif
         
         <p class="text-center mt-3">
-            <a href="{{ route('register') }}" class="register-link">Create Account!</a>
+            <a href="/register" class="register-link">Create Account!</a>
         </p>
     </div>
     </div>
