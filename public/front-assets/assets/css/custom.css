@@ -381,7 +381,7 @@ Custom Css
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-  width: 350px;
+  width: 450px;
 }
 .form-container h2 {
   text-align: center;
@@ -430,7 +430,7 @@ input:focus {
   color: #aaa;
   font-size: 14px;
 }
-#profile-pic {
+#profile {
   display: none;
 }
 /* Profile Image Preview */
@@ -461,5 +461,4 @@ input:focus {
 .submit-btn:hover {
   background-color: #009933;
 }
-
 

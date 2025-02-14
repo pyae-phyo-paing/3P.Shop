@@ -16,51 +16,63 @@
                     <div class="card">
                         <div class="card-body">
                             <h1 class="h2">{{$product->name}}</h1>
-                            <ul class="list-inline mt-4">
-                                <li class="list-inline-item">
-                                    <h6>Price :</h6>
-                                </li>
-                                <li class="list-inline-item">
-                                    <p><strong>{{$product->price}} MMK</strong></p>
-                                </li>
-                            </ul>
-                            <p class="py-2">
+
+                            @if ($product->discount > 0)
+                                <ul class="list-inline mt-4 mb-0">
+                                    <li class="list-inline-item">
+                                        <h6>Normal Price :</h6>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p style="text-decoration: line-through; color:red"><strong>{{$product->price}} MMK</strong></p>
+                                    </li>
+                                </ul>
+
+                                <ul class="list-inline mb-0">
+                                    <li class="list-inline-item">
+                                        <h6>Discount Price :</h6>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p><strong>{{$product->price - ($product->price * ($product->discount/100))}} MMK</strong> <span>({{$product->discount}}% - Discount)</span></p>
+                                    </li>
+                                </ul>
+                            @elseif($product->discount == 0)
+                                <ul class="list-inline mt-4">
+                                    <li class="list-inline-item">
+                                        <h6>Price :</h6>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p><strong>{{$product->price}} MMK</strong></p>
+                                    </li>
+                                </ul>
+                            @endif
+
+
+                            <p class="pt-2">
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-secondary"></i>
-                                <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
                             </p>
-                            <ul class="list-inline">
+                            <ul class="list-inline mb-0">
                                 <li class="list-inline-item">
                                     <h6>Brand:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>{{$product->brand->name}}</strong></p>
+                                    <p><strong>{{$product->brand->name}}</strong></p>
                                 </li>
                             </ul>
 
                             <h6>Description:</h6>
                             <p>{{$product->description}}</p>
+
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Avaliable Color :</h6>
+                                    <h6>Category:</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>White / Black</strong></p>
+                                    <p class="text-muted"><strong>{{$product->category->name}}</strong></p>
                                 </li>
-                            </ul>
-
-                            <h6>Specification:</h6>
-                            <ul class="list-unstyled pb-3">
-                                <li>Lorem ipsum dolor sit</li>
-                                <li>Amet, consectetur</li>
-                                <li>Adipiscing elit,set</li>
-                                <li>Duis aute irure</li>
-                                <li>Ut enim ad minim</li>
-                                <li>Dolore magna aliqua</li>
-                                <li>Excepteur sint</li>
                             </ul>
 
                             <form action="">

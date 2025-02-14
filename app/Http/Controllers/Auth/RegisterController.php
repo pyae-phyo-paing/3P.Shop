@@ -47,17 +47,16 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required','max:11'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'password_confirmation' => 'required',
-            'profile' => ['required'],
-            'address' => ['required'],
-        ]);
-    }
+{
+    return Validator::make($data, [
+        'name' => ['required', 'string', 'max:255'],
+        'phone' => ['required','max:11'],
+        'profile' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+        'address' => ['required']
+    ]);
+}
 
     /**
      * Create a new user instance after a valid registration.
@@ -67,20 +66,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $file_name = time().'.'.$data['profile']->extension();
-        $upload = $data['profile']->move(public_path('images/user/'),$file_name);
-
-        if($upload){
-            $profile = "/images/user/".$file_name;
+        $request = request();
+        if ($request->hasFile('profile')) {
+            $file = $request->file('profile'); 
+            $file_name = time() . '.' . $file->extension();
+            $file->move(public_path('images/user/'), $file_name);
+            $profile = "/images/user/" . $file_name;
+        } else {
+            $profile = null;
         }
+
         return User::create([
             'name' => $data['name'],
             'phone' => $data['phone'],
+            'profile' => $profile,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'profile' => $profile,
             'address' => $data['address'],
-            'role' => $data['role'],
+            'role' => 'User',
         ]);
     }
 }

@@ -24,7 +24,13 @@
                 <p>Mailing Address - {{$first_order->address}}</p>
             </div>
             <div class="col-md-6 text-end">
-                <p>Date - {{$first_order->order_accept_date}}</p>
+                @if ($first_order->status == 'Accept')
+                    <p>Accept Date - {{$first_order->order_accept_date}}</p>
+                @elseif($first_order->status == 'Shipping')
+                    <p>Shipping Date - {{$first_order->order_shipping_date}}</p>
+                @elseif($first_order->status == 'Complete')
+                    <p>Complete Date - {{$first_order->order_complete_date}}</p>
+                @endif
                 <p>Address - {{$first_order->user->address}} </p>
                 <p>Payment Method - {{$first_order->payment_method}} </p>
                 @if ($first_order->payment_method == 'visa')
