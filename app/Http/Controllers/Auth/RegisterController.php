@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -67,9 +70,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
         $request = request();
+
+        // Handle profile image upload
         if ($request->hasFile('profile')) {
-            $file = $request->file('profile'); 
+            $file = $request->file('profile');
             $file_name = time() . '.' . $file->extension();
             $file->move(public_path('images/user/'), $file_name);
             $profile = "/images/user/" . $file_name;
@@ -77,7 +83,11 @@ class RegisterController extends Controller
             $profile = null;
         }
 
-        return User::create([
+        // Merge profile into data array
+        $request->merge(['profile' => $profile]);
+
+        // Create the user
+        $user = User::create([
             'name' => $data['name'],
             'phone' => $data['phone'],
             'profile' => $profile,
@@ -87,5 +97,12 @@ class RegisterController extends Controller
             'role' => 'User',
         ]);
 
+        try {
+            Mail::to($user->email)->send(new WelcomeMail($user));
+        } catch (\Exception $e) {
+            Log::error('Mail sending failed: ' . $e->getMessage()); // Change \Log to Log
+        }
+
+        return $user;
     }
 }
