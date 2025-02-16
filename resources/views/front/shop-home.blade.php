@@ -137,7 +137,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
+                    <div class="card h-100 shop-card">
                         <a href="{{url('/brand/Gucci')}}">
                             <img src="{{asset('front-assets/./assets/img/gucci_brand.jpg')}}" class="card-img-top" alt="...">
                         </a>
@@ -159,7 +159,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
+                    <div class="card h-100 shop-card">
                         <a href="{{route('shop-single',12)}}">
                             <img src="{{asset('front-assets/./assets/img/trandly_men_fashion_img_02.jpg')}}" class="card-img-top" alt="...">
                         </a>
@@ -183,7 +183,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
+                    <div class="card h-100 shop-card">
                         <a href="{{route('shop-single',12)}}">
                             <img src="{{asset('front-assets/./assets/img/trandly_woman_fashion_img_01.jpg')}}" class="card-img-top" alt="...">
                         </a>
@@ -207,7 +207,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
+                    <div class="card h-100 shop-card">
                         <a href="{{route('shop-single',12)}}">
                             <img src="{{asset('front-assets/./assets/img/trandly_kids_fashion_img_01.jpg')}}" class="card-img-top" alt="...">
                         </a>
@@ -231,7 +231,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
+                    <div class="card h-100 shop-card">
                         <a href="{{url('/brand/Gucci')}}">
                             <img src="{{asset('front-assets/./assets/img/gucci_brand.jpg')}}" class="card-img-top" alt="...">
                         </a>

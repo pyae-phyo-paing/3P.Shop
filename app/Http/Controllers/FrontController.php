@@ -70,8 +70,16 @@ class FrontController extends Controller
     public function shopSingle($id) 
     {
         $product= Product::find($id);
-
-        return view('front.shop-single',compact('product'));
+        $related_products = Product::where('category_id',$product->category_id)
+                        ->where('id','!=', $product->id)
+                        ->orderBy('created_at','desc')
+                        ->take(8)
+                        ->get();
+        
+        if($related_products->isEmpty()){
+            $related_products = null;
+        }
+        return view('front.shop-single',compact('product','related_products'));
     }
 
     

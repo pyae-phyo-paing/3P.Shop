@@ -36,21 +36,18 @@
                     @foreach ($products as $product)
 
                     <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
+                        <div class="card mb-4 product-wap rounded-0 shop-card">
                             <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="{{$product->image}}">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="{{route('shop-single',$product->id)}}"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="{{route('shop-single',$product->id)}}"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
+                                <a href="{{route('shop-single',$product->id)}}"><img class="card-img rounded-0 img-fluid" src="{{$product->image}}"></a>
                             </div>
                             <div class="card-body">
-                                <a href="{{route('shop-single',$product->id)}}" class="h3 text-decoration-none">{{$product->name}}</a>
+                                    <a href="{{route('shop-single',$product->id)}}" class="h2 text-decoration-none">{{$product->name}}</a>
+                                    <p class="h4 mt-2">{{$product->brand->name}} Brand</p>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
+                                    <li>{{$product->price}} MMK</li>
+                                    @if ($product->discount > 0)
+                                        <li><span class="text-danger">{{$product->discount}}%</span> - Dis</li>
+                                    @endif
                                     <li class="pt-2">
                                         <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
                                         <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
@@ -68,7 +65,9 @@
                                         <i class="text-muted fa fa-star"></i>
                                     </li>
                                 </ul>
-                                <p class="text-center mb-0">{{$product->price}}</p>
+                                <div class="text-center mb-0">
+                                    <a href="{{route('shop-single',$product->id)}}" class="view-button">View</a>
+                                </div>
                             </div>
                         </div>
                     </div>  

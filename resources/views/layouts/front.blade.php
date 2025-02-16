@@ -223,6 +223,7 @@ https://templatemo.com/tm-559-zay-shop
                     </ul>
                 </div>
 
+
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
                     <ul class="list-unstyled text-light footer-link-list">
