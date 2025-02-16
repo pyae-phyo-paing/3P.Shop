@@ -201,25 +201,21 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">09-789-643-507</a>
+                            <a class="text-decoration-none" href="tel:09-789-643-507">09-789-643-507</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">paing@gmail.com</a>
+                            <a class="text-decoration-none" href="mailto:leosurki@gmail.com">leosurki@gmail.com</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Categories</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
-                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
+                        <li><a class="text-decoration-none" href="{{route('getProductsByCategory','Men')}}">Men's Fashions</a></li>
+                        <li><a class="text-decoration-none" href="{{route('getProductsByCategory','Women')}}">Women's Fashions</a></li>
+                        <li><a class="text-decoration-none" href="{{route('getProductsByCategory','Kids')}}">Kid's Fashions</a></li>
                     </ul>
                 </div>
 
@@ -272,8 +268,8 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
-                            Copyright &copy; 2021 Company Name 
-                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                            Copyright &copy; 2025 3P.Shop Fashion Company 
+                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">Leo Surki</a>
                         </p>
                     </div>
                 </div>

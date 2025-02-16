@@ -105,17 +105,17 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="{{asset('front-assets/./assets/img/men_fashion_menu_img_03.jpg')}}" class="rounded-circle img-fluid border"></a>
+                <a href="{{route('getProductsByCategory','Men')}}"><img src="{{asset('front-assets/./assets/img/men_fashion_menu_img_03.jpg')}}" class="rounded-circle img-fluid border shop-card"></a>
                 <h5 class="text-center mt-3 mb-3">Men Fashions</h5>
                 <p class="text-center"><a class="btn go-shop-button" href="{{route('getProductsByCategory','Men')}}">Go Shop<i class="fas fa-arrow-right"></i></a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="{{asset('front-assets/./assets/img/woman_fashion_menu_img_01.jpg')}}" class="rounded-circle img-fluid border"></a>
+                <a href="{{route('getProductsByCategory','Women')}}"><img src="{{asset('front-assets/./assets/img/woman_fashion_menu_img_01.jpg')}}" class="rounded-circle img-fluid border shop-card"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Woman Fashions</h2>
                 <p class="text-center"><a class="btn go-shop-button" href="{{route('getProductsByCategory','Women')}}">Go Shop<i class="fas fa-arrow-right"></i></a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="{{asset('front-assets/./assets/img/kids_fashion_menu_img_03.jpg')}}" class="rounded-circle img-fluid border"></a>
+                <a href="{{route('getProductsByCategory','Kids')}}"><img src="{{asset('front-assets/./assets/img/kids_fashion_menu_img_03.jpg')}}" class="rounded-circle img-fluid border shop-card"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Kids Fashions</h2>
                 <p class="text-center"><a class="btn go-shop-button" href="{{route('getProductsByCategory','Kids')}}">Go Shop<i class="fas fa-arrow-right"></i></a></p>
             </div>
