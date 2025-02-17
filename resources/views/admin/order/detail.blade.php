@@ -63,8 +63,8 @@
                     <tr>
                         <td>{{$i++}}</td>
                         <td>{{$order->product->name}}</td>
-                        <td>{{$order->product->price}}</td>
-                        <td>{{$order->product->discount}}</td>
+                        <td>{{ $order->price ?? $order->product->price }}</td>
+                        <td>{{ $order->discount ?? $order->product->discount }}</td>
                         <td>{{$order->qty}}</td>
                         <td>{{$order->total}}</td>
                     </tr>

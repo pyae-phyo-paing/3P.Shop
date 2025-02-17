@@ -16,6 +16,8 @@ class Payment extends Model
         'voucher_no',
         'payment_method',
         'qty',
+        'discount',
+        'price',
         'total',
         'status',
         'product_size',

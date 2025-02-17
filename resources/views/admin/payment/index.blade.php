@@ -72,6 +72,9 @@
                                 </td>
                                 <td>
                                     <a href="{{route('backend.payment-detial',$payment->voucher_no)}}" class="btn btn-sm btn-warning">Detail</a>
+                                    @if ($payment->status == 'Paid')
+                                    <a href="{{route('backend.print-payment',$payment->voucher_no)}}" class="btn btn-sm btn-primary">Print</a>
+                                    @endif
                                 </td>
                             </tr>
                             @endif

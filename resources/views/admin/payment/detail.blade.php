@@ -57,8 +57,8 @@
                     <tr>
                         <td>{{$i++}}</td>
                         <td>{{$payment->product->name}}</td>
-                        <td>{{$payment->product->price}}</td>
-                        <td>{{$payment->product->discount}}</td>
+                        <td>{{ $payment->price ?? $payment->product->price }}</td>
+                        <td>{{ $payment->discount ?? $payment->product->discount }}</td>
                         <td>{{$payment->qty}}</td>
                         <td>{{$payment->total}}</td>
                     </tr>

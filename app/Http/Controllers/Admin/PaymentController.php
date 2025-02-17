@@ -48,25 +48,36 @@ class PaymentController extends Controller
         return view('admin.payment.detail',compact('payments','first_payment'));
     }
 
+    public function printPaidPayment($voucher)
+    {
+        $payments = Payment::where('voucher_no',$voucher)->where('status','Paid')->get();
+        $printpayment_first = Payment::where('voucher_no',$voucher)->where('status','Paid')->first();
+        return view('admin.payment.printpayment',compact('payments','printpayment_first'));
+    }
+
     public function paymentStatus(Request $request, $voucher)
     {
         // dd($request);
         $redirectRoute = 'backend.payments';
         DB::transaction(function () use($request,$voucher, &$redirectRoute) {
             //Payment Data ကို Update (status = 'Paid' ပြောင်းမယ်)
-            $payment = Payment::where('voucher_no', $voucher);
-            $payment->update(['status' => $request->status]);
+            $payments = Payment::where('voucher_no', $voucher)->get();
+            
             // **Fixed: Update ပြီးတဲ့ Data ကို ပြန်ယူဖို့ get() သုံးပါ**
-                $payments = $payment->get(); 
+               
             
             // Order Table ထဲကို Data ကို Create လုပ်မယ်
 
             foreach($payments as $payment){
+                // dd($payment);
+                $payment->update(['status' => $request->status]);
                 Order::create([
                     'voucher_no' =>$payment->voucher_no,
                     'payment_method' => $payment->payment_method,
                     'total' => $payment->total,
                     'qty' => $payment->qty,
+                    'discount' => $payment->discount,
+                    'price' => $payment->price,
                     'payment_slip' => $payment->payment_slip,
                     'status' => 'Accept',
                     'address' => $payment->address,
@@ -92,4 +103,6 @@ class PaymentController extends Controller
         });
         return redirect()->route($redirectRoute);
     }
+
+
 }

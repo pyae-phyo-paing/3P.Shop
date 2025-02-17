@@ -16,6 +16,8 @@ class Order extends Model
         'payment_method',
         'total',
         'qty',
+        'discount',
+        'price',
         'payment_slip',
         'status',
         'address',

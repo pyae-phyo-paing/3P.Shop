@@ -31,6 +31,7 @@ Route::get('/payment-info', [App\Http\Controllers\FrontController::class, 'payme
 Route::post('payment-submit', [App\Http\Controllers\FrontController::class, 'paymentSubmit'])->name('payment-submit');
 
 
+
 Route::group(['middleware'=>['auth','role:Super Admin|Admin|Staff'],'prefix'=>'backend','as'=>'backend.'],function(){
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
     Route::resource('category',App\Http\Controllers\Admin\CategoryController::class);
@@ -41,6 +42,7 @@ Route::group(['middleware'=>['auth','role:Super Admin|Admin|Staff'],'prefix'=>'b
     Route::get('paid-payments',[App\Http\Controllers\Admin\PaymentController::class, 'paidPayments'])->name('paid-payments');
     Route::get('payments/{voucher}',[App\Http\Controllers\Admin\PaymentController::class, 'detailPayment'])->name('payment-detial');
     Route::put('payments/{voucher}',[App\Http\Controllers\Admin\PaymentController::class, 'paymentStatus'])->name('payment-status');
+    Route::get('payments/print/{voucher}',[App\Http\Controllers\Admin\PaymentController::class, 'printPaidPayment'])->name('print-payment');
     Route::get('orders',[App\Http\Controllers\Admin\OrderController::class, 'orders'])->name('orders');
     Route::get('order-shipping',[App\Http\Controllers\Admin\OrderController::class, 'orderShipping'])->name('order-shipping');
     Route::get('order-complete',[App\Http\Controllers\Admin\OrderController::class, 'orderComplete'])->name('order-complete');
