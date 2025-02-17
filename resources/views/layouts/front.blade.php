@@ -145,6 +145,9 @@ https://templatemo.com/tm-559-zay-shop
                                 </button>
                                 <div class="dropdown-content">
                                     <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+                                    @if (Auth::user()->role == 'Super Admin')
+                                        <a href="/backend"><i class="fas fa-cog"></i>Admin Panel</a>
+                                    @endif
                                     <a href="{{ route('logout') }}" 
                                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
