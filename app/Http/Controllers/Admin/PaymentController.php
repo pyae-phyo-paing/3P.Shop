@@ -8,6 +8,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PaymentController extends Controller
 {
@@ -54,6 +55,7 @@ class PaymentController extends Controller
         $printpayment_first = Payment::where('voucher_no',$voucher)->where('status','Paid')->first();
         return view('admin.payment.printpayment',compact('payments','printpayment_first'));
     }
+
 
     public function paymentStatus(Request $request, $voucher)
     {
