@@ -23,7 +23,10 @@ class FrontController extends Controller
 
     public function shopHome()
     {
-        return view('front.shop-home');
+        $products = Product::where('discount','>=','10')->get();
+         // Discount ကြီးစဥ် (Descending) နဲ့ ငယ်စဥ် (Ascending) ကို ပြုလုပ်ခြင်း
+        $sortedProducts = $products->sortByDesc('discount')->values()->merge($products->sortBy('discount')->values());
+        return view('front.shop-home',compact('sortedProducts'));
     }
 
     public function shops()

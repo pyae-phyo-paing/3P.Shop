@@ -30,6 +30,8 @@ Route::get('/payment-info', [App\Http\Controllers\FrontController::class, 'payme
 
 Route::post('payment-submit', [App\Http\Controllers\FrontController::class, 'paymentSubmit'])->name('payment-submit');
 
+Route::resource('user-profile',App\Http\Controllers\ProfileController::class);
+
 
 
 Route::group(['middleware'=>['auth','role:Super Admin|Admin|Staff'],'prefix'=>'backend','as'=>'backend.'],function(){

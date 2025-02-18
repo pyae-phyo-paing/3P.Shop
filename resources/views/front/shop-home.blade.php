@@ -24,6 +24,7 @@
                                     Get very smart men's fashion, very beautiful lady's fashion, very cute kids' fashion at <strong>3P.Shop</strong>.
                                     
                                 </p>
+                                <p class="text-center mt-4"><a class="btn go-shop-button" href="{{route('shops')}}">Shop Now<i class="fas fa-arrow-right"></i></a></p>
                             </div>
                         </div>
                     </div>
@@ -42,6 +43,7 @@
                                 <p>
                                     To dress smartly and enjoy the beauty of nature, own trendy fashion from <strong>3P.Shop</strong>!
                                 </p>
+                                <p class="text-center mt-4"><a class="btn go-shop-button" href="{{route('getProductsByCategory','Men')}}">Shop Now<i class="fas fa-arrow-right"></i></a></p>
                             </div>
                         </div>
                     </div>
@@ -60,6 +62,7 @@
                                 <p>
                                     Buy lady fashion from <strong>3P.Shop</strong>, wear it beautifully and shape the life of a woman. 
                                 </p>
+                                <p class="text-center mt-4"><a class="btn go-shop-button" href="{{route('getProductsByCategory','Women')}}">Shop Now<i class="fas fa-arrow-right"></i></a></p>
                             </div>
                         </div>
                     </div>
@@ -78,6 +81,7 @@
                                 <p>
                                     To make your child's future bright, to make everything perfect, to make people look beautiful, order baby fashion at <strong> 3P.Shop</strong>
                                 </p>
+                                <p class="text-center mt-4"><a class="btn go-shop-button" href="{{route('getProductsByCategory','Kids')}}">Shop Now<i class="fas fa-arrow-right"></i></a></p>
                             </div>
                         </div>
                     </div>
@@ -92,6 +96,28 @@
         </a>
     </div>
     <!-- End Banner Hero -->
+{{-- Discount Card --}}
+
+
+   
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                @foreach ($sortedProducts as $product)
+                    <div class="col-md-3">
+                        <div class="discount-card shop-card">
+                            <div class="discount-badge">{{$product->discount}}% OFF</div>
+                            <a href="{{route('shop-single',$product->id)}}"><img src="{{$product->image}}" alt="Product Image" class="product-img"></a>
+                            <div class="discount-details">
+                                <h4>Special Discount</h4>
+                                <p>Get {{$product->discount}}% off on this product. Limited time offer!</p>
+                                <a href="{{route('shop-single',$product->id)}}" class="view-button">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    
 
     <!-- Start Categories of The Month -->
     <section class="container py-5">

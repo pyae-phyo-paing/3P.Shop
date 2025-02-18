@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <title>3P.Shop Fashion Shop</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -39,7 +39,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">paing@gmail.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">leosurki3698@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">09-789-643-507</a>
                 </div>
@@ -144,7 +144,7 @@ https://templatemo.com/tm-559-zay-shop
                                 <i class="fas fa-chevron-down"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+                                    <a href="{{route('user-profile.index')}}"><i class="fas fa-user"></i> Profile</a>
                                     @if (Auth::user()->role == 'Super Admin')
                                         <a href="/backend"><i class="fas fa-cog"></i>Admin Panel</a>
                                     @endif
@@ -226,9 +226,9 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Home</a></li>
+                        <li><a class="text-decoration-none" href="{{route('shop-home')}}">Home</a></li>
                         <li><a class="text-decoration-none" href="#">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
+                        <li><a class="text-decoration-none" href="{{route('shops')}}">Shop</a></li>
                         <li><a class="text-decoration-none" href="#">FAQs</a></li>
                         <li><a class="text-decoration-none" href="#">Contact</a></li>
                     </ul>
