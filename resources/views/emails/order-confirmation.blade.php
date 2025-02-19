@@ -57,27 +57,28 @@
             <p>Dear {{ Auth::user()->name }},</p>
             <p>Thank you for your purchase!</p>
             <p>Your payment is being checked by the 3P.Shop Team. Your payment voucher will be sent via email shortly.</p>
+            <p>Your orders may take up to a week for it to arrive.</p>
             <p>Your order has been received. Here are your order details:</p>
 
             <table class="order-table">
                 <tr>
                     <th>Product Name</th>
-                    <th>Quantity</th>
                     <th>Price</th>
-                    <th>Amount</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
                 </tr>
                 @foreach ($orderItems as $item)
                 <tr>
                     <td>{{ $item->product->name }}</td>
+                    <td>{{ $item->price }} </td>
                     <td>{{ $item->qty }}</td>
-                    <td>${{ $item->price }} </td>
-                    <td>${{ $item->total }}</td>
+                    <td>{{ $item->total }}</td>
                 </tr>
                 @endforeach
 
             </table>
 
-            <p><strong>Total Amount: {{ number_format(collect($orderItems)->sum('total'), 2) }} MMK</strong></p>
+            <p><strong>Total Amount: {{ number_format(collect($orderItems)->sum('total')) }} MMK</strong></p>
             <p>We will process your order soon. Thank you for shopping with us!</p>
         </div>
         <div class="footer">© {{ date('Y') }} <span class="text-success">3P.Shop</span></div>

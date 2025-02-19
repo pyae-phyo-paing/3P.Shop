@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PaymentVoucherMail;
+use App\Models\User;
 
 class PaymentController extends Controller
 {
@@ -59,50 +62,57 @@ class PaymentController extends Controller
 
     public function paymentStatus(Request $request, $voucher)
     {
-        // dd($request);
         $redirectRoute = 'backend.payments';
-        DB::transaction(function () use($request,$voucher, &$redirectRoute) {
-            //Payment Data ကို Update (status = 'Paid' ပြောင်းမယ်)
-            $payments = Payment::where('voucher_no', $voucher)->get();
-            
-            // **Fixed: Update ပြီးတဲ့ Data ကို ပြန်ယူဖို့ get() သုံးပါ**
-               
-            
-            // Order Table ထဲကို Data ကို Create လုပ်မယ်
 
-            foreach($payments as $payment){
-                // dd($payment);
+        // Update မလုပ်ခင်မှာ $payments ကိုယူထားလို့ $payments ထဲမှာ user_id ရှိတယ်
+        $payments = Payment::where('voucher_no', $voucher)->get(); 
+
+        DB::transaction(function () use($request, $voucher, &$redirectRoute, $payments) {
+            // Payment Data ကို Update
+            $updatedPayments = Payment::where('voucher_no', $voucher)->get(); 
+
+            foreach ($updatedPayments as $payment) {
                 $payment->update(['status' => $request->status]);
+
                 Order::create([
-                    'voucher_no' =>$payment->voucher_no,
-                    'payment_method' => $payment->payment_method,
-                    'total' => $payment->total,
-                    'qty' => $payment->qty,
-                    'discount' => $payment->discount,
-                    'price' => $payment->price,
-                    'payment_slip' => $payment->payment_slip,
-                    'status' => 'Accept',
-                    'address' => $payment->address,
-                    'note' => $payment->note,
-                    'product_size' => $payment->product_size,
-                    'category' => $payment->category,
-                    'brand' => $payment->brand,
-                    'card_number' => $payment->card_number,
+                    'voucher_no'       => $payment->voucher_no,
+                    'payment_method'   => $payment->payment_method,
+                    'total'            => $payment->total,
+                    'qty'              => $payment->qty,
+                    'discount'         => $payment->discount,
+                    'price'            => $payment->price,
+                    'payment_slip'     => $payment->payment_slip,
+                    'status'           => 'Accept',
+                    'address'          => $payment->address,
+                    'note'             => $payment->note,
+                    'product_size'     => $payment->product_size,
+                    'category'         => $payment->category,
+                    'brand'            => $payment->brand,
+                    'card_number'      => $payment->card_number,
                     'card_holder_name' => $payment->card_holder_name,
-                    'mobile_provider' => $payment->mobile_provider,
-                    'order_accept_date' => Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s'),
-                    'product_id' => $payment->product_id,
-                    'user_id' => $payment->user_id,
-                    'payment_id' => $payment->id
+                    'mobile_provider'  => $payment->mobile_provider,
+                    'order_accept_date'=> Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s'),
+                    'product_id'       => $payment->product_id,
+                    'user_id'          => $payment->user_id,
+                    'payment_id'       => $payment->id
                 ]);
             }
 
-            if($payment->status == 'Checking'){
+            // Payment Status ကိုစစ်မယ်
+            if ($updatedPayments->contains('status', 'Checking')) {
                 $redirectRoute = 'backend.payments';
-            }elseif($payment->status == 'Paid'){
+            } elseif ($updatedPayments->contains('status', 'Paid')) {
                 $redirectRoute = 'backend.paid-payments';
+
+                // User ID ကို Update မလုပ်ခင်မှာ ရယူထားတဲ့ $payments မှာယူမယ်
+                $userId = $payments->first()->user_id;
+                $userEmail = User::find($userId)->email;
+
+                // Payment Voucher Email ပို့မယ်
+                Mail::to($userEmail)->send(new PaymentVoucherMail($updatedPayments));
             }
         });
+        
         return redirect()->route($redirectRoute);
     }
 

@@ -125,6 +125,18 @@
             //processData: false,
             //contentType: false,
             //ဒီနှစ်ခုက Form Data သယ်ဖို့
+            let submitBtn = $('#payment-submit');
+            // **SweetAlert2 Loading Dialog ပြ**
+            Swal.fire({
+                title: 'Processing Payment...',
+                html: '<div class="spinner"></div><br> Please wait while we process your payment.',
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
 
             $.ajax({
                 type: 'POST',
@@ -138,7 +150,7 @@
                     if(response){
                         Swal.fire({
                         title: 'Your Orders Successful!',
-                        html: 'Thank you for shopping with us. <br> We hope to see you again soon!',
+                        html: 'Thank you for shopping with us. <br> We hope to see you again soon! <br> Please Check your email.',
                         icon: 'success',
                         confirmButtonText: 'Continue Shopping',
                         allowOutsideClick: false, // User က Dialog အပြင်မှာ နှိပ်ရင် မပျောက်အောင်
@@ -157,6 +169,14 @@
                            
                     }
                     
+                },
+                error: function() {
+                    Swal.fire({
+                        title: 'Payment Failed!',
+                        text: 'Something went wrong. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
                 }
 
             })

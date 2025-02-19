@@ -8,23 +8,25 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Payment;
 
-class OrderConfirmationMail extends Mailable
+class PaymentVoucherMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $orderItems;
+    public $payments;
     /**
      * Create a new message instance.
      */
-    public function __construct($orderItems)
+    public function __construct($payments)
     {
-        $this->orderItems = $orderItems;
+        $this->payments = $payments;
     }
 
     public function build()
     {
-        return $this->subject('Order Confirmation')
-                    ->view('emails.order-confirmation');
+        return $this->subject('Payment Voucher')
+                    ->view('emails.payment-voucher')
+                    ->with(['payments' => $this->payments]);
     }
 }
