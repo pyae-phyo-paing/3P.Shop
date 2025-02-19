@@ -9,6 +9,8 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\OrderConfirmationMail;
+use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
@@ -256,6 +258,7 @@ class FrontController extends Controller
 
         $transation_date = Carbon::now('Asia/Yangon')->format('Y-m-d H:i:s'); // Myanmar Local Time ကို Format ပြောင်းပြီး သိမ်းမယ်
 
+        $orderItems = []; // Order အားလုံးကို သိမ်းဖို့ array
         //$data နဲ့ ယူတာတေွက localStorage ထဲမှာ သိမ်းထားတဲ့ data
         // $request နဲ့ယူတာတွေသည် input data တွေ
         foreach ($dataArray as $data)
@@ -283,7 +286,13 @@ class FrontController extends Controller
             $payment->user_id = Auth::id();
             $payment->product_id = $data->id;
             $payment->save();
+
+            $orderItems[] = $payment;
+
         }
+
+        // **Email ပို့မယ်**
+        Mail::to(Auth::user()->email)->send(new OrderConfirmationMail($orderItems));
 
         return 'Your Orders Successful';
     }
