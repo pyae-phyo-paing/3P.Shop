@@ -79,13 +79,14 @@
         Total Amount: {{ number_format($payments->sum('total')) }} MMK
     </div>
 
-
+    <div class="paid-watermark">PAID</div>
+    
     <div class="footer">
         <p>Thank you for shopping with us!</p>
         <p>&copy; {{ date('Y') }} 3P.Shop . All rights reserved.</p>
     </div>
 
-    <div class="paid-watermark">PAID</div>
+    
 </div>
 
 </body>

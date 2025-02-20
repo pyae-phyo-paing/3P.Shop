@@ -82,7 +82,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                
+                <div class="float-end">{{$payment_data->links()}}</div>
             </div>
         </div>
     </div>

@@ -12,6 +12,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PaymentVoucherMail;
 use App\Models\User;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class PaymentController extends Controller
 {
@@ -27,10 +28,27 @@ class PaymentController extends Controller
         foreach($voucher_group as $voucher){
             $payment_id = array_column($voucher,'id'); //voucher array ထဲမှာ ရှိတဲ့ payment id ေတွကို ယူတာ
            
-            $payment_data[] = Payment::whereIn('id',$payment_id)->where('status','Checking')->first();
+            $checkPayment = Payment::whereIn('id',$payment_id)->where('status','Checking')->first();
+
+            if (!is_null($checkPayment)) { // Null မဖြစ်တဲ့ Data များသာထည့်မယ်
+                $payment_data[] = $checkPayment;
+            }
         }
 
-        return view('admin.payment.index',compact('payment_data'));
+        // ✅ Pagination Setup with Default Page 1
+        $currentPage = request()->get('page', 1); // Page Null ဖြစ်ရင် 1 သတ်မှတ်မယ်
+        $perPage = 20; // တစ်စာမှာ 20 ခုချင်း ပြမယ်
+        $paymentCollection = collect($payment_data)->filter(); // Null မပါအောင် Filter
+
+        $pagedData = new LengthAwarePaginator(
+            $paymentCollection->forPage($currentPage, $perPage)->values(), // ✅ values() သုံးပြီး index reset
+            $paymentCollection->count(),
+            $perPage,
+            $currentPage,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+
+        return view('admin.payment.index',['payment_data' => $pagedData]);
     }
 
     public function paidPayments()
@@ -40,9 +58,27 @@ class PaymentController extends Controller
         $payment_data = [];
         foreach($voucher_group as $voucher){
             $payment_id = array_column($voucher,'id');
-            $payment_data[] = Payment::whereIn('id',$payment_id)->where('status','Paid')->first();
+            $paidPayment = Payment::whereIn('id',$payment_id)->where('status','Paid')->first();
+
+            if (!is_null($paidPayment)) { // Null မဖြစ်တဲ့ Data များသာထည့်မယ်
+                $payment_data[] = $paidPayment;
+            }
         }
-        return view('admin.payment.index',compact('payment_data'));
+
+         // ✅ Pagination Setup with Default Page 1
+            $currentPage = request()->get('page', 1); // Page Null ဖြစ်ရင် 1 သတ်မှတ်မယ်
+            $perPage = 20; // တစ်စာမှာ 20 ခုချင်း ပြမယ်
+            $paymentCollection = collect($payment_data)->filter(); // Null မပါအောင် Filter
+
+            $pagedData = new LengthAwarePaginator(
+                $paymentCollection->forPage($currentPage, $perPage)->values(), // ✅ values() သုံးပြီး index reset
+                $paymentCollection->count(),
+                $perPage,
+                $currentPage,
+                ['path' => request()->url(), 'query' => request()->query()]
+            );
+
+        return view('admin.payment.index',['payment_data'=> $pagedData]);
     }
 
     public function detailPayment($voucher)

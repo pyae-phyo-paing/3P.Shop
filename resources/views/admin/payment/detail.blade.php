@@ -130,7 +130,20 @@
                 cancelButtonText: "No, cancel!",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $("#payment-form").submit();
+                   // ✅ Loading Alert ပြမယ်
+                   Swal.fire({
+                        title: "Processing...",
+                        text: "Please wait while we update the payment status.",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
+
+                    setTimeout(() => {
+                        $("#payment-form").submit(); // ✅ Form ကို Submit လုပ်မယ်
+                    }, 1000); // 1 Second Delay
                 }
             });
         });

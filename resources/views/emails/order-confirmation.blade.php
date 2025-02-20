@@ -64,6 +64,7 @@
                 <tr>
                     <th>Product Name</th>
                     <th>Price</th>
+                    <th>Discount</th>
                     <th>Quantity</th>
                     <th>Total</th>
                 </tr>
@@ -71,6 +72,7 @@
                 <tr>
                     <td>{{ $item->product->name }}</td>
                     <td>{{ $item->price }} </td>
+                    <td>{{ $item->discount }}</td>
                     <td>{{ $item->qty }}</td>
                     <td>{{ $item->total }}</td>
                 </tr>
