@@ -50,6 +50,9 @@ Route::group(['middleware'=>['auth','role:Super Admin|Admin|Staff'],'prefix'=>'b
     Route::get('order-complete',[App\Http\Controllers\Admin\OrderController::class, 'orderComplete'])->name('order-complete');
     Route::get('orders/{voucher}',[App\Http\Controllers\Admin\OrderController::class, 'detailOrder'])->name('order-detail');
     Route::put('orders/{voucher}',[App\Http\Controllers\Admin\OrderController::class, 'orderStatus'])->name('order-status');
+    Route::get('order-list', [App\Http\Controllers\Admin\DashboardController::class, 'orderList'])->name('order-list');
+    Route::get('payment-list', [App\Http\Controllers\Admin\DashboardController::class, 'paymentList'])->name('payment-list');
+    Route::get('instock-list', [App\Http\Controllers\Admin\DashboardController::class, 'instockList'])->name('instock-list');
 });
 
 Auth::routes();

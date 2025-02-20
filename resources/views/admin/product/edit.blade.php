@@ -4,7 +4,7 @@
         <!-- Page Header -->
         <div class="my-3 px-3">
             <h3 class="mt-4 d-inline">Edit Product</h3>
-            <a href="{{route('backend.product.index')}}" class="btn btn-danger float-end">Cancel</a>
+            <a onclick="window.history.back();" class="btn btn-danger float-end">Cancel</a>
         </div>
         <ol class="breadcrumb mb-4 px-3">
             <li class="breadcrumb-item"><a href="{{route('backend.product.index')}}">Product List</a></li>

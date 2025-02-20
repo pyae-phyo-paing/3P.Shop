@@ -31,6 +31,7 @@ class FrontController extends Controller
         return view('front.shop-home',compact('sortedProducts'));
     }
 
+
     public function shops()
     {
         $products = Product::orderBy('id')->paginate(6);

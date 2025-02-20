@@ -18,4 +18,63 @@
     border-radius: 10px;
 }
 
- 
+/* Menu Card */
+ /* General Menu Card */
+ .menu-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease-in-out;
+}
+
+.menu-card:hover {
+    transform: scale(1.02);
+}
+
+/* Header Design */
+.menu-header {
+    color: white;
+    padding: 16px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* List Item */
+.menu-item {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #333;
+    background: white;
+    transition: all 0.3s ease-in-out;
+    border-top: 1px solid #ddd;
+}
+
+.menu-item:hover {
+    background: #f5f5f5;
+    color: #007bff;
+}
+
+/* Icon Style */
+.menu-item i {
+    font-size: 18px;
+}
+
+/* Card Colors */
+.blue-card { background: linear-gradient(45deg, #007bff, #0056b3); }
+.green-card { background: linear-gradient(45deg, #28a745, #218838); }
+.orange-card { background: linear-gradient(45deg, #fd7e14, #dc5314); }
+
+/* Description */
+.menu-description {
+    padding: 12px 20px;
+    font-size: 14px;
+    background: #f8f9fa;
+    color: #555;
+    border-top: 1px solid #ddd;
+}

@@ -186,8 +186,8 @@
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100 shop-card">
-                        <a href="{{route('shop-single',12)}}">
-                            <img src="{{asset('front-assets/./assets/img/trandly_men_fashion_img_02.jpg')}}" class="card-img-top" alt="...">
+                        <a href="{{url('/brand/Louis Vuitton')}}">
+                            <img src="{{asset('front-assets/./assets/img/louis_vuitton_front_img.jpg')}}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -198,13 +198,12 @@
                                     <i class="text-muted fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
                                 </li>
-                                <li class="text-muted text-right">$240.00</li>
+                                
                             </ul>
-                            <a href="{{ url('/brand/Gucci') }}" class="h2 text-decoration-none text-dark">Gucci</a>
+                            <a href="{{url('/brand/Louis Vuitton')}}" class="h2 text-decoration-none text-dark">Louis Vuitton</a>
                             <p class="card-text">
                                 Step into a world where less is more.Where sleek design meets daring confidence.Our "Minimal Yet Bold" collection redefines elegance—clean lines, striking accents, and timeless style.
                             </p>
-                            <p class="text-muted">Reviews (24)</p>
                         </div>
                     </div>
                 </div>

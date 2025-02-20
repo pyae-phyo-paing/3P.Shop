@@ -4,7 +4,7 @@
 <div class="container-fluid px-4">
 <div class="my-5">
     <h3 class="my-4 d-inline">Order Detail</h3>
-    <a href="{{route('backend.orders')}}" class="btn btn-sm btn-danger float-end">Cancel</a>
+    <a onclick="window.history.back();" class="btn btn-sm btn-danger float-end">Cancel</a>
 </div>
 
 <div class="card mb-4">
