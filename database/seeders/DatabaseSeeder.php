@@ -24,13 +24,22 @@ class DatabaseSeeder extends Seeder
         //     'email' => ['test@example.com','min@gmail.com'],
         //     'password' =>Hash::make(['1234567','123456789']),
         // ]);
-        Brand::factory(10)->create();
-        Category::factory(10)->create();
-        Product::factory(20)->create();
-        Payment::factory(20)->create();
-        Order::factory(20)->create();
-        // User::factory(10)->create();
+        // Brand::factory(10)->create();
+        // Category::factory(10)->create();
+        // Product::factory(20)->create();
+        // Payment::factory(20)->create();
+        // Order::factory(20)->create();
+        // // User::factory(10)->create();
 
+        User::create([
+            'name' => 'Super Admin',
+            'phone' => '09250362841',
+            'email' => 'leosurki3698@gmail.com',
+            'password' => Hash::make('123456789'),
+            'profile' => '/images/users/1739697826.png',
+            'address' => 'Mandalay',
+            'role' => 'Super Admin',
+        ]);
         
     }
 }

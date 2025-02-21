@@ -100,23 +100,37 @@
 
 
    
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                @foreach ($sortedProducts as $product)
-                    <div class="col-md-3">
-                        <div class="discount-card shop-card">
-                            <div class="discount-badge">{{$product->discount}}% OFF</div>
-                            <a href="{{route('shop-single',$product->id)}}"><img src="{{$product->image}}" alt="Product Image" class="product-img"></a>
-                            <div class="discount-details">
-                                <h4>Special Discount</h4>
-                                <p>Get {{$product->discount}}% off on this product. Limited time offer!</p>
-                                <a href="{{route('shop-single',$product->id)}}" class="view-button">Shop Now</a>
+<div class="container mt-5">
+    <div id="discountCarousel" class="carousel slide" data-bs-ride="false">  {{-- Auto slide disabled --}}
+        <div class="carousel-inner">
+            @foreach ($sortedProducts->chunk(4) as $key => $productChunk) 
+                <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
+                    <div class="row justify-content-center">
+                        @foreach ($productChunk as $product)
+                            <div class="col-md-3 mb-4">
+                                <div class="discount-card shop-card">
+                                    <div class="discount-badge">{{$product->discount}}% OFF</div>
+                                    <a href="{{route('shop-single',$product->id)}}">
+                                        <img src="{{$product->image}}" alt="Product Image" class="product-img">
+                                    </a>
+                                    <div class="discount-details">
+                                        <h4>Special Discount</h4>
+                                        <p>Get {{$product->discount}}% off on this product. Limited time offer!</p>
+                                        <a href="{{route('shop-single',$product->id)}}" class="view-button">Shop Now</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
+
+        <!-- Custom Navigation Buttons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#discountCarousel" data-bs-slide="prev"></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#discountCarousel" data-bs-slide="next"></button>
+    </div>
+</div>
     
 
     <!-- Start Categories of The Month -->
@@ -283,5 +297,12 @@
         </div>
     </section>
     <!-- End Featured Product -->
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var myCarousel = new bootstrap.Carousel(document.querySelector('#discountCarousel'), {
+                interval: false, // Auto slide ပိတ်ရန်
+                wrap: true // Last slide ကနေ First slide ပြန်သွားနိုင်ရန်
+            });
+        });
+    </script>
 @endsection
