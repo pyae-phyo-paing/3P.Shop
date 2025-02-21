@@ -83,9 +83,13 @@
                                             <li class="list-inline-item size_select">Size :
                                                 <select name="size_option" id="size_option">
                                                     <option value="" disabled selected>Select your size</option>
-                                                    <option value="xl" data-size="xl">xl</option>
-                                                    <option value="Medium" data-size="Medium">Medium</option>
-                                                    <option value="Large" data-size="Large">Large</option>
+                                                    <option value="XS" data-size="XS">XS (Extra Small)</option>
+                                                    <option value="S" data-size="S">S (Small)</option>
+                                                    <option value="M" data-size="M">M (Medium)</option>
+                                                    <option value="L" data-size="L">L (Large)</option>
+                                                    <option value="XL" data-size="XL">XL (Extra Large)</option>
+                                                    <option value="XXL" data-size="XXL">XXL (Double Extra Large)</option>
+                                                    <option value="XXXL" data-size="XXXL">XXXL (Triple Extra Large)</option>
                                                 </select>
                                             </li>
                                         </ul>

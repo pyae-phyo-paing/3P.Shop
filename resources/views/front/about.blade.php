@@ -56,8 +56,24 @@
                 </div>
                 <div class="col-12 col-md-6 mb-4">
                     <div class="card shop-card">
-                        <a href="{{url('/brand/Louis Vuitton')}}" class="text-decoration-none"><img src="{{asset('front-assets/assets/img/gucci_brand_about.jpg')}}" class="card-img-top img-fluid" alt="Image"></a>
+                        <a href="{{url('/brand/Louis Vuitton')}}" class="text-decoration-none"><img src="{{asset('front-assets/assets/img/louis_vuitton_brand_about.jpg')}}" class="card-img-top img-fluid" alt="Image"></a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-light">
+        <div class="container py-5">
+            <div class="row d-flex justify-content-center align-items-center mt-3">
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="card shop-card">
+                        <a href="{{url('/brand/Gucci')}}" class="text-decoration-none"><img src="{{asset('front-assets/assets/img/gucci_brand_about.jpg')}}" class="card-img-top img-fluid" alt="Image"></a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4 text-center">
+                    <h2 class="h2">Gucci Brand</h2>
+                    <p>Gucci was founded in 1921 in Italy and has become one of the most popular luxury fashion brands in the world. Known for its sophisticated designs and premium quality, Gucci is recognized for its iconic monogram pattern and high-end leather goods. Recent collections blend modern designs with vintage vibes, maintaining its reputation for elegance and style.</p>
+                    <p class="text-center mt-4"><a class="btn go-shop-button" href="{{url('/brand/Gucci')}}">View Fashions<i class="fas fa-arrow-right"></i></a></p>
                 </div>
             </div>
         </div>
