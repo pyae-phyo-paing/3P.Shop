@@ -124,7 +124,7 @@
 
     <!-- Edit Button -->
     <div class="text-center">
-        <a href="" class="mt-4 view-button">Edit Profile</a>
+        <a href="{{route('user-profile.edit', Auth::user()->id )}}" class="mt-4 view-button">Edit Profile</a>
     </div>
 </div>
 @endsection

@@ -12,7 +12,6 @@
             </h4>
         </div>
         <div class="col-lg-8 my-3">
-            <a href="#" class="btn btn-primary mx-2 float-end">Refund Payment List</a>
             <a href="{{route('backend.paid-payments')}}" class="btn btn-success mx-2 float-end">Paid Payment List</a>
             <a href="{{route('backend.payments')}}" class="btn btn-secondary mx-2 float-end">Checking Payment List</a>
         </div>

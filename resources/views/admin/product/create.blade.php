@@ -88,7 +88,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="@error('description') is-invalid @enderror" id="summernote" name="description">{{old('description')}}</textarea>
+                        <textarea class="@error('description') is-invalid @enderror" id="summernote" name="description">{{ str_replace('<p></p>', '', old('description')) }}</textarea>
                         @error('description')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

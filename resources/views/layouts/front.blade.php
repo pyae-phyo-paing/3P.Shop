@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="apple-touch-icon" href="{{asset('front-assets/assets/img/apple-icon.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('front-assets/assets/img/favicon.ico')}}">
 
     <link rel="stylesheet" href="{{asset('front-assets/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('front-assets/assets/css/templatemo.css')}}">
@@ -196,7 +194,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">3P.Shop</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>

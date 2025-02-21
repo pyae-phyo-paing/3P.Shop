@@ -35,10 +35,11 @@ Route::resource('user-profile',App\Http\Controllers\ProfileController::class);
 
 
 
+
 Route::group(['middleware'=>['auth','role:Super Admin|Admin|Staff'],'prefix'=>'backend','as'=>'backend.'],function(){
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::resource('category',App\Http\Controllers\Admin\CategoryController::class);
-    Route::resource('brand',App\Http\Controllers\Admin\BrandController::class);
+    Route::resource('category',App\Http\Controllers\Admin\CategoryController::class)->middleware('role:Super Admin|Admin');
+    Route::resource('brand',App\Http\Controllers\Admin\BrandController::class)->middleware('role:Super Admin|Admin');
     Route::resource('product',App\Http\Controllers\Admin\ProductController::class);
     Route::resource('user', App\Http\Controllers\Admin\UserController::class)->middleware('role:Super Admin');
     Route::get('payments',[App\Http\Controllers\Admin\PaymentController::class, 'payments'])->name('payments');

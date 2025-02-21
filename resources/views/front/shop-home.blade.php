@@ -127,8 +127,8 @@
         </div>
 
         <!-- Custom Navigation Buttons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#discountCarousel" data-bs-slide="prev"></button>
-        <button class="carousel-control-next" type="button" data-bs-target="#discountCarousel" data-bs-slide="next"></button>
+        <button class="carousel-control-prev discount-carousel-prev" type="button" data-bs-target="#discountCarousel" data-bs-slide="prev"></button>
+        <button class="carousel-control-next discount-carousel-next" type="button" data-bs-target="#discountCarousel" data-bs-slide="next"></button>
     </div>
 </div>
     
@@ -179,7 +179,7 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100 shop-card">
                         <a href="{{url('/brand/Gucci')}}">
-                            <img src="{{asset('front-assets/./assets/img/gucci_brand.jpg')}}" class="card-img-top" alt="...">
+                            <img src="{{asset('front-assets/./assets/img/gucci_front_img.jpg')}}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -223,8 +223,8 @@
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100 shop-card">
-                        <a href="{{route('shop-single',12)}}">
-                            <img src="{{asset('front-assets/./assets/img/trandly_woman_fashion_img_01.jpg')}}" class="card-img-top" alt="...">
+                        <a href="{{url('/brand/Dior')}}">
+                            <img src="{{asset('front-assets/./assets/img/dior_front_img.jpg')}}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -235,61 +235,81 @@
                                     <i class="text-muted fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
                                 </li>
-                                <li class="text-muted text-right">$480.00</li>
+                                
                             </ul>
-                            <a href="{{url('/brand/Louis Vuitton')}}" class="h2 text-decoration-none text-dark">Louis Vuitton</a>
-                            <p class="card-text">
-                                Stay cool, stay chic.Turn heads effortlessly with our perfect blend of comfort and style.
-                            </p>
-                            <p class="text-muted">Reviews (48)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100 shop-card">
-                        <a href="{{route('shop-single',12)}}">
-                            <img src="{{asset('front-assets/./assets/img/trandly_kids_fashion_img_01.jpg')}}" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$360.00</li>
-                            </ul>
-                            <a href="#" class="h2 text-decoration-none text-dark">Summer Vacation Style</a>
-                            <p class="card-text">
-                                Cool linen shirts, playful printed shorts, and trendy accessories—perfect for beach days and sunny adventures!
-                            </p>
-                            <p class="text-muted">Reviews (74)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100 shop-card">
-                        <a href="{{url('/brand/Gucci')}}">
-                            <img src="{{asset('front-assets/./assets/img/gucci_brand.jpg')}}" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$240.00</li>
-                            </ul>
-                            <a href="{{ url('/brand/Gucci') }}" class="h2 text-decoration-none text-dark">Gucci</a>
+                            <a href="{{url('/brand/Dior')}}" class="h2 text-decoration-none text-dark">Dior</a>
                             <p class="card-text">
                                 Step into a world where less is more.Where sleek design meets daring confidence.Our "Minimal Yet Bold" collection redefines elegance—clean lines, striking accents, and timeless style.
                             </p>
-                            <p class="text-muted">Reviews (24)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100 shop-card">
+                        <a href="{{url('/brand/Yves Saint Laurent')}}">
+                            <img src="{{asset('front-assets/./assets/img/ysl_front_img.jpg')}}" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                
+                            </ul>
+                            <a href="{{url('/brand/Yves Saint Laurent')}}" class="h2 text-decoration-none text-dark">Yves Saint Laurent</a>
+                            <p class="card-text">
+                                Step into a world where less is more.Where sleek design meets daring confidence.Our "Minimal Yet Bold" collection redefines elegance—clean lines, striking accents, and timeless style.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100 shop-card">
+                        <a href="{{url('/brand/Zara')}}">
+                            <img src="{{asset('front-assets/./assets/img/zara_front_img.jpg')}}" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                
+                            </ul>
+                            <a href="{{url('/brand/Zara')}}" class="h2 text-decoration-none text-dark">Zara</a>
+                            <p class="card-text">
+                                Step into a world where less is more.Where sleek design meets daring confidence.Our "Minimal Yet Bold" collection redefines elegance—clean lines, striking accents, and timeless style.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100 shop-card">
+                        <a href="{{url('/brand/Chanel')}}">
+                            <img src="{{asset('front-assets/./assets/img/chanel_front_img.jpg')}}" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                
+                            </ul>
+                            <a href="{{url('/brand/Chanel')}}" class="h2 text-decoration-none text-dark">Chanel</a>
+                            <p class="card-text">
+                                Step into a world where less is more.Where sleek design meets daring confidence.Our "Minimal Yet Bold" collection redefines elegance—clean lines, striking accents, and timeless style.
+                            </p>
                         </div>
                     </div>
                 </div>

@@ -91,10 +91,9 @@
         <div class="container my-4">
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Our Brands</h1>
+                    <h1 class="h1">Our Brands' Logo</h1>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        Lorem ipsum dolor sit amet.
+                        You can view our brands' logo.
                     </p>
                 </div>
                 <div class="col-lg-9 m-auto tempaltemo-carousel">
@@ -136,16 +135,16 @@
                                     <div class="carousel-item">
                                         <div class="row">
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/brand_01.png')}}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/ysl_logo.png')}}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/brand_02.png')}}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/champion_logo.png')}}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/brand_03.png')}}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/louis_vuitton_logo.png')}}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/brand_04.png')}}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/gucci_logo.png')}}" alt="Brand Logo"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -155,16 +154,16 @@
                                     <div class="carousel-item">
                                         <div class="row">
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/brand_01.png')}}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/superme_logo.png')}}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/brand_02.png')}}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/zara_logo.png')}}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/brand_03.png')}}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/chanel_logo.png')}}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/brand_04.png')}}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{{asset('front-assets/assets/img/dior_logo.png')}}" alt="Brand Logo"></a>
                                             </div>
                                         </div>
                                     </div>

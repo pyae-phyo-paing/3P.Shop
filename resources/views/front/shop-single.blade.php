@@ -64,7 +64,7 @@
                             </ul>
 
                             <h6>Description:</h6>
-                            <p>{{$product->description}}</p>
+                            <p>{!! trim(preg_replace('/<p>\s*<\/p>/', '', $product->description)) !!}</p>
 
                             <ul class="list-inline">
                                 <li class="list-inline-item">
