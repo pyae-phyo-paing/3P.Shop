@@ -61,7 +61,7 @@
 
             <!-- Common Inputs for All Payments -->
             <div class="mb-3">
-                <label class="form-label" for="address">Address</label>
+                <label class="form-label" for="address">Mailing Address <span class="text-danger">*</span></label>
                 <input type="text" name="address" class="form-control border-success" placeholder="Enter your address">
             </div>
 

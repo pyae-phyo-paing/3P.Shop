@@ -228,8 +228,6 @@ https://templatemo.com/tm-559-zay-shop
                         <li><a class="text-decoration-none" href="{{route('shop-home')}}">Home</a></li>
                         <li><a class="text-decoration-none" href="#">About Us</a></li>
                         <li><a class="text-decoration-none" href="{{route('shops')}}">Shop</a></li>
-                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
                     </ul>
                 </div>
 
