@@ -144,7 +144,7 @@
                 <div id="carousel-related-product">
                     @foreach ($related_products as $related_product)
                         <div class="p-2 pb-3">
-                            <div class="product-wap card rounded-0">
+                            <div class="product-wap card rounded-0 shop-card">
                                 <div class="card rounded-0">
                                     <a href="{{route('shop-single',$related_product->id)}}"><img class="card-img rounded-0 img-fluid" src="{{$related_product->image}}"></a>
                                 </div>
