@@ -34,7 +34,7 @@ class FrontController extends Controller
 
     public function shops()
     {
-        $products = Product::orderBy('id')->paginate(6);
+        $products = Product::orderBy('id')->paginate(15);
         $menbrands = Product::whereHas('category', function ($query) {
             $query->where('name', 'Men'); 
         })
