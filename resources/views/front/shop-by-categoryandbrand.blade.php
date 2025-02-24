@@ -70,49 +70,43 @@
                 </div>
                 <div class="row">
                     @foreach ($products as $product)
-
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0 shop-card">
-                            <div class="card rounded-0">
-                                <a href="{{route('shop-single',$product->id)}}"><img class="card-img rounded-0 img-fluid" src="{{$product->image}}"></a>
+                    <div class="col-md-4 mb-4 d-flex align-items-stretch"> <!-- Column spacing & equal height -->
+                        <div class="card product-card shadow-sm"> <!-- Shadow effect -->
+                            <!-- Image Container -->
+                            <div class="card-img-container">
+                                <a href="{{route('shop-single',$product->id)}}">
+                                    <img class="card-img-top product-image" src="{{$product->image}}" alt="{{$product->name}}">
+                                </a>
                             </div>
-                            <div class="card-body">
-                                    <a href="{{route('shop-single',$product->id)}}" class="h2 text-decoration-none">{{$product->name}}</a>
-                                    <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                        <li><p class="h4 mt-2">{{$product->brand->name}} Brand</p></li>
-                                        
-                                    </ul>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>{{$product->price}} MMK</li>
+                            <!-- Card Body -->
+                            <div class="card-body d-flex flex-column text-center product-card-body">
+                                <h5 class="card-title">
+                                    <a href="{{route('shop-single',$product->id)}}" class="text-decoration-none text-dark">{{$product->name}}</a>
+                                </h5>
+                                <p class="text-muted">{{$product->brand->name}} Brand</p>
+                
+                                <div class="price-discount">
+                                    <span class="text-primary h5">{{$product->price}} MMK</span>
                                     @if ($product->discount > 0)
-                                        <li><span class="text-danger">{{$product->discount}}%</span> - Dis</li>
+                                        <span class="text-danger h6 ml-2 px-2">{{$product->discount}}% Off</span>
                                     @endif
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <div class="text-center mb-0">
+                                </div>
+                
+                                <div class="rating mb-2">
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </div>
+                
+                                <div class="mt-auto">
                                     <a href="{{route('shop-single',$product->id)}}" class="view-button">View</a>
                                 </div>
                             </div>
                         </div>
                     </div>  
-
                     @endforeach
-                    
                 </div>
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
