@@ -61,14 +61,18 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Product
                             </a>
-                            <a class="nav-link" href="{{route('backend.category.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Category
-                            </a>
-                            <a class="nav-link" href="{{route('backend.brand.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Brand
-                            </a>
+                            @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
+                                <a class="nav-link" href="{{route('backend.category.index')}}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Category
+                                </a>
+                            @endif
+                            @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin')
+                                <a class="nav-link" href="{{route('backend.brand.index')}}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Brand
+                                </a>
+                            @endif
                             <a class="nav-link" href="{{route('backend.payments')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Payment
@@ -77,10 +81,12 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Order
                             </a>
-                            <a class="nav-link" href="{{route('backend.user.index')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                User
-                            </a>
+                            @if (Auth::user()->role == 'Super Admin')
+                                <a class="nav-link" href="{{route('backend.user.index')}}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    User
+                                </a> 
+                            @endif
                            
                         </div>
                     </div>

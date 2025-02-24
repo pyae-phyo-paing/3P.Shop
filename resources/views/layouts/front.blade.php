@@ -144,7 +144,7 @@ https://templatemo.com/tm-559-zay-shop
                                 </button>
                                 <div class="dropdown-content">
                                     <a href="{{route('user-profile.index')}}"><i class="fas fa-user"></i> Profile</a>
-                                    @if (Auth::user()->role == 'Super Admin')
+                                    @if (Auth::user()->role == 'Super Admin' || Auth::user()->role == 'Admin' || Auth::user()->role == 'Staff')
                                         <a href="/backend"><i class="fas fa-cog"></i>Admin Panel</a>
                                     @endif
                                     <a href="{{ route('logout') }}" 
