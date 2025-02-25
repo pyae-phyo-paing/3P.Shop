@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="{{$product->image}}" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid shop-card" src="{{$product->image}}" alt="Card image cap" id="product-detail">
                     </div>
                     
                 </div>
@@ -143,42 +143,42 @@
             
                 <div id="carousel-related-product">
                     @foreach ($related_products as $related_product)
-                        <div class="p-2 pb-3">
-                            <div class="product-wap card rounded-0 shop-card">
-                                <div class="card rounded-0">
-                                    <a href="{{route('shop-single',$related_product->id)}}"><img class="card-img rounded-0 img-fluid" src="{{$related_product->image}}"></a>
+                    <div class="col-md-3 mb-4 d-flex align-items-stretch"> <!-- Column spacing & equal height -->
+                        <div class="card product-card shadow-sm"> <!-- Shadow effect -->
+                            <!-- Image Container -->
+                            <div class="card-img-container">
+                                <a href="{{route('shop-single',$related_product->id)}}">
+                                    <img class="card-img-top product-image" src="{{$related_product->image}}" alt="{{$related_product->name}}">
+                                </a>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body d-flex flex-column text-center product-card-body">
+                                <h5 class="card-title">
+                                    <a href="{{route('shop-single',$related_product->id)}}" class="text-decoration-none text-dark">{{$related_product->name}}</a>
+                                </h5>
+                                <p class="text-muted">{{$related_product->brand->name}} Brand</p>
+                
+                                <div class="price-discount">
+                                    <span class="text-primary h5">{{$related_product->price}} MMK</span>
+                                    @if ($related_product->discount > 0)
+                                        <span class="text-danger h6 ml-2 px-2">{{$related_product->discount}}% Off</span>
+                                    @endif
                                 </div>
-                                <div class="card-body">
-                                        <a href="{{route('shop-single',$related_product->id)}}" class="h2 text-decoration-none">{{$related_product->name}}</a>
-                                        <p class="h4 mt-2">{{$related_product->brand->name}} Brand</p>
-                                    <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                        <li>{{$related_product->price}} MMK</li>
-                                        @if ($related_product->discount > 0)
-                                            <li><span class="text-danger">{{$related_product->discount}}%</span> - Dis</li>
-                                        @endif
-                                        <li class="pt-2">
-                                            <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                            <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                            <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                            <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                            <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                        </li>
-                                    </ul>
-                                    <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                        <li>
-                                            <i class="text-warning fa fa-star"></i>
-                                            <i class="text-warning fa fa-star"></i>
-                                            <i class="text-warning fa fa-star"></i>
-                                            <i class="text-muted fa fa-star"></i>
-                                            <i class="text-muted fa fa-star"></i>
-                                        </li>
-                                    </ul>
-                                    <div class="text-center mb-0">
-                                        <a href="{{route('shop-single',$related_product->id)}}" class="view-button">View</a>
-                                    </div>
+                
+                                <div class="rating mb-2">
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </div>
+                
+                                <div class="mt-auto">
+                                    <a href="{{route('shop-single',$related_product->id)}}" class="view-button">View</a>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @endforeach
                     
     

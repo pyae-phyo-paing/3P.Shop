@@ -32,51 +32,57 @@
                     </div>
                     
                 </div>
-                <div class="row">
-                    @foreach ($products as $product)
-                    <div class="col-md-4 mb-4 d-flex align-items-stretch"> <!-- Column spacing & equal height -->
-                        <div class="card product-card shadow-sm"> <!-- Shadow effect -->
-                            <!-- Image Container -->
-                            <div class="card-img-container">
-                                <a href="{{route('shop-single',$product->id)}}">
-                                    <img class="card-img-top product-image" src="{{$product->image}}" alt="{{$product->name}}">
-                                </a>
+                
+                @if($products instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                    <div class="row">
+                        @foreach ($products as $product)
+                        <div class="col-md-4 mb-4 d-flex align-items-stretch"> <!-- Column spacing & equal height -->
+                            <div class="card product-card shadow-sm"> <!-- Shadow effect -->
+                                <!-- Image Container -->
+                                <div class="card-img-container">
+                                    <a href="{{route('shop-single',$product->id)}}">
+                                        <img class="card-img-top product-image" src="{{$product->image}}" alt="{{$product->name}}">
+                                    </a>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body d-flex flex-column text-center product-card-body">
+                                    <h5 class="card-title">
+                                        <a href="{{route('shop-single',$product->id)}}" class="text-decoration-none text-dark">{{$product->name}}</a>
+                                    </h5>
+                                    <p class="text-muted">{{$product->brand->name}} Brand</p>
+                    
+                                    <div class="price-discount">
+                                        <span class="text-primary h5">{{$product->price}} MMK</span>
+                                        @if ($product->discount > 0)
+                                            <span class="text-danger h6 ml-2 px-2">{{$product->discount}}% Off</span>
+                                        @endif
+                                    </div>
+                    
+                                    <div class="rating mb-2">
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i>
+                                    </div>
+                    
+                                    <div class="mt-auto">
+                                        <a href="{{route('shop-single',$product->id)}}" class="view-button">View</a>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- Card Body -->
-                            <div class="card-body d-flex flex-column text-center product-card-body">
-                                <h5 class="card-title">
-                                    <a href="{{route('shop-single',$product->id)}}" class="text-decoration-none text-dark">{{$product->name}}</a>
-                                </h5>
-                                <p class="text-muted">{{$product->brand->name}} Brand</p>
-                
-                                <div class="price-discount">
-                                    <span class="text-primary h5">{{$product->price}} MMK</span>
-                                    @if ($product->discount > 0)
-                                        <span class="text-danger h6 ml-2 px-2">{{$product->discount}}% Off</span>
-                                    @endif
-                                </div>
-                
-                                <div class="rating mb-2">
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </div>
-                
-                                <div class="mt-auto">
-                                    <a href="{{route('shop-single',$product->id)}}" class="view-button">View</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                    @endforeach
-                </div>
-                <div div="row">
-                    <ul class="pagination pagination-lg justify-content-end">
-                        
-                    </ul>
-                </div>
+                        </div>  
+                        @endforeach
+                    </div>
+                    
+                    <div div="row">
+                        <ul class="pagination pagination-lg justify-content-end">
+                            {{ $products->links() }}
+                        </ul>
+                    </div>
+                @else
+                    <p>No products available.</p> 
+                @endif       
             </div>
 
         </div>

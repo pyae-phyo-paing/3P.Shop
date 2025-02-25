@@ -16,11 +16,20 @@ class FrontController extends Controller
 {
     public function brandlist($brandId)
     {
+        // Brand ကို ပထမစစ်မယ်
+        $brand = Brand::with('products')->find($brandId);
+
+        if (!$brand) {
+            return redirect()->back()->with('error', 'Brand not found.');
+        }
+
         $brands = Brand::all();
-        $brand = Brand::findOrFail($brandId);
         $brandName = $brand->name;
-        $products = $brand->products;
-        return view('front.brand-product',compact('brands','brand','brandName','products'));
+        
+        // Products ကို paginate လုပ်မယ်
+        $products = $brand->products()->paginate(12); // 6 products per page
+
+        return view('front.brand-product', compact('brands', 'brand', 'brandName', 'products'));
     }
 
     public function shopHome()
@@ -99,9 +108,9 @@ class FrontController extends Controller
 
         if ($brand) {
         // Brand နဲ့ ချိတ်ထားတဲ့ Product တွေကို ရှာပါ
-            $products = Product::where('brand_id', $brand->id)->get();
+            $products = Product::where('brand_id', $brand->id)->paginate(12);
         } else {
-         $products = collect(); // Brand မရှိရင် empty collection ပြန်ပေးပါ
+         $products = new \Illuminate\Pagination\LengthAwarePaginator([], 0, 12); // Brand မရှိရင် empty collection ပြန်ပေးပါ
         }
 
         return view('front.brand-product',compact('brands','products','brandName'));
