@@ -95,7 +95,7 @@
 
             <!-- Call to Action Button -->
             <div style="text-align: center;">
-                <a href="https://3pshop.com/shop" class="button">Start Shopping Now</a>
+                <a href="https://3pshop.heinlearn.com/shops" class="button">Start Shopping Now</a>
             </div>
         </div>
 
