@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="icon" type="image/png" href="{{ asset('front-assets/assets/img/3pshop_logo.png') }}">
 
     <link rel="stylesheet" href="{{asset('front-assets/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('front-assets/assets/css/templatemo.css')}}">
@@ -226,7 +226,7 @@ https://templatemo.com/tm-559-zay-shop
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="{{route('shop-home')}}">Home</a></li>
-                        <li><a class="text-decoration-none" href="#">About Us</a></li>
+                        <li><a class="text-decoration-none" href="{{route('about')}}">About Us</a></li>
                         <li><a class="text-decoration-none" href="{{route('shops')}}">Shop</a></li>
                     </ul>
                 </div>

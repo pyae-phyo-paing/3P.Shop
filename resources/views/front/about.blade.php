@@ -8,9 +8,23 @@
                 <div class="col-md-8 text-white">
                     <h1>About Us</h1>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <p>
+                            At 3P.Shop, we believe fashion is more than just clothing—it’s a statement of who you are! Our collection brings you the latest trends, high-quality designs, and stylish essentials that let you express yourself with confidence.
+                        </p>
+
+                        <p>
+                            🌿 Fresh, Trendy & Affordable – We curate the best fashion pieces just for you.
+                        </p>
+                        <p>
+                            💚 Style for Everyone – Whether you love casual, chic, or bold looks, we’ve got you covered.
+                        </p>
+                        <p>
+                            🚀 Fast & Reliable Service – Shop with ease and get your favorites delivered to your doorstep.
+                        </p>
+
+                        <p>
+                            Discover your perfect style today at 3P.Shop! 🛒✨
+                        </p>
                     </p>
                 </div>
                 <div class="col-md-4">
