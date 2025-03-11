@@ -131,65 +131,58 @@
         </div>
 </section>
     <!-- Close Content -->
-@if ($related_products)
-    <!-- Start Article -->
+    @if ($related_products)
     <section class="py-5">
         <div class="container">
             <div class="row text-left p-2 pb-3">
                 <h4>Related Products</h4>
             </div>
 
-            <!--Start Carousel Wrapper-->
-            
-                <div id="carousel-related-product">
-                    @foreach ($related_products as $related_product)
-                    <div class="col-md-3 mb-4 d-flex align-items-stretch"> <!-- Column spacing & equal height -->
-                        <div class="card product-card shadow-sm"> <!-- Shadow effect -->
-                            <!-- Image Container -->
-                            <div class="card-img-container">
-                                <a href="{{route('shop-single',$related_product->id)}}">
-                                    <img class="card-img-top product-image" src="{{$related_product->image}}" alt="{{$related_product->name}}">
-                                </a>
-                            </div>
-                            <!-- Card Body -->
-                            <div class="card-body d-flex flex-column text-center product-card-body">
-                                <h5 class="card-title">
-                                    <a href="{{route('shop-single',$related_product->id)}}" class="text-decoration-none text-dark">{{$related_product->name}}</a>
-                                </h5>
-                                <p class="text-muted">{{$related_product->brand->name}} Brand</p>
-                
-                                <div class="price-discount">
-                                    <span class="text-primary h5">{{$related_product->price}} MMK</span>
-                                    @if ($related_product->discount > 0)
-                                        <span class="text-danger h6 ml-2 px-2">{{$related_product->discount}}% Off</span>
-                                    @endif
-                                </div>
-                
-                                <div class="rating mb-2">
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </div>
-                
-                                <div class="mt-auto">
-                                    <a href="{{route('shop-single',$related_product->id)}}" class="view-button">View</a>
+            <!-- Custom Slider -->
+            <div class="custom-slider-container">
+                <button id="prevSlide" class="custom-carousel-btn left-btn">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+
+                <div class="custom-slider-wrapper">
+                    <div class="custom-slider">
+                        @foreach ($related_products as $related_product)
+                            <div class="custom-slide">
+                                <div class="related-product-card">
+                                    <a href="{{ route('shop-single', $related_product->id) }}" class="text-decoration-none">
+                                        <div class="related-product-image-container">
+                                            <img class="related-product-image shop-card" src="{{ $related_product->image }}" alt="{{ $related_product->name }}">
+                                        </div>
+                                    </a>
+                                    <div class="related-product-info">
+                                        <h5 class="related-product-name">{{ $related_product->name }}</h5>
+                                        <p class="related-product-brand">{{ $related_product->brand->name }} Brand</p>
+                                        <span class="related-price">{{ number_format($related_product->price) }} MMK</span>
+                                        
+                                        <div class="rating">
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                @if ($i <= $related_product->rating)
+                                                    <i class="fa fa-star text-warning"></i>
+                                                @else
+                                                    <i class="fa fa-star text-muted"></i>
+                                                @endif
+                                            @endfor
+                                        </div>
+
+                                        <a href="{{ route('shop-single', $related_product->id) }}" class="related-view-button">View</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                    
-    
-                    
                 </div>
-            
 
-
+                <button id="nextSlide" class="custom-carousel-btn right-btn">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
     </section>
-    <!-- End Article -->
 @endif
     
 
@@ -197,34 +190,48 @@
 @section('script')
 
     <script>
-        $('#carousel-related-product').slick({
-            infinite: true,
-            arrows: false,
-            slidesToShow: 4,
-            slidesToScroll: 3,
-            dots: true,
-            responsive: [{
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 3
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 3
-                    }
+        document.addEventListener("DOMContentLoaded", function () {
+            let slider = document.querySelector(".custom-slider");
+            let slides = document.querySelectorAll(".custom-slide");
+            let prevButton = document.getElementById("prevSlide");
+            let nextButton = document.getElementById("nextSlide");
+
+            let index = 0;
+            let totalSlides = slides.length;
+            let slideWidth = slides[0].offsetWidth;
+            let visibleSlides = 4; // Change based on screen size
+
+            function updateSlideWidth() {
+                slideWidth = slides[0].offsetWidth;
+                updateSlidePosition();
+            }
+
+            function updateSlidePosition() {
+                slider.style.transform = `translateX(-${index * slideWidth}px)`;
+            }
+
+            function goToNextSlide() {
+                if (index < totalSlides - visibleSlides) {
+                    index++;
+                } else {
+                    index = 0;
                 }
-            ]
+                updateSlidePosition();
+            }
+
+            function goToPrevSlide() {
+                if (index > 0) {
+                    index--;
+                } else {
+                    index = totalSlides - visibleSlides;
+                }
+                updateSlidePosition();
+            }
+
+            nextButton.addEventListener("click", goToNextSlide);
+            prevButton.addEventListener("click", goToPrevSlide);
+
+            window.addEventListener("resize", updateSlideWidth);
         });
     </script>
     <script>
