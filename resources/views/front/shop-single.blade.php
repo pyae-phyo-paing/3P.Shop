@@ -190,49 +190,62 @@
 @section('script')
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let slider = document.querySelector(".custom-slider");
-            let slides = document.querySelectorAll(".custom-slide");
-            let prevButton = document.getElementById("prevSlide");
-            let nextButton = document.getElementById("nextSlide");
+      document.addEventListener("DOMContentLoaded", function () {
+    let slider = document.querySelector(".custom-slider");
+    let slides = document.querySelectorAll(".custom-slide");
+    let prevButton = document.getElementById("prevSlide");
+    let nextButton = document.getElementById("nextSlide");
 
-            let index = 0;
-            let totalSlides = slides.length;
-            let slideWidth = slides[0].offsetWidth;
-            let visibleSlides = 4; // Change based on screen size
+    let index = 0;
+    let totalSlides = slides.length;
+    let slideWidth = slides[0].offsetWidth;
+    let visibleSlides = getVisibleSlides();
 
-            function updateSlideWidth() {
-                slideWidth = slides[0].offsetWidth;
-                updateSlidePosition();
-            }
+    function getVisibleSlides() {
+        if (window.innerWidth <= 576) return 1; // Mobile (Small) => Show 1 Slide
+        if (window.innerWidth <= 768) return 2; // Mobile (Medium) => Show 2 Slides
+        if (window.innerWidth <= 992) return 3; // Tablet => Show 3 Slides
+        return 4; // Desktop => Show 4 Slides
+    }
 
-            function updateSlidePosition() {
-                slider.style.transform = `translateX(-${index * slideWidth}px)`;
-            }
+    function updateSlideWidth() {
+        slides = document.querySelectorAll(".custom-slide");
+        slideWidth = document.querySelector(".custom-slide").offsetWidth;
+        visibleSlides = getVisibleSlides();
+        updateSlidePosition();
+    }
 
-            function goToNextSlide() {
-                if (index < totalSlides - visibleSlides) {
-                    index++;
-                } else {
-                    index = 0;
-                }
-                updateSlidePosition();
-            }
+    function updateSlidePosition() {
+        let maxIndex = totalSlides - visibleSlides;
+        index = Math.min(index, maxIndex);
+        let translateValue = index * slideWidth;
+        slider.style.transform = `translateX(-${translateValue}px)`;
+    }
 
-            function goToPrevSlide() {
-                if (index > 0) {
-                    index--;
-                } else {
-                    index = totalSlides - visibleSlides;
-                }
-                updateSlidePosition();
-            }
+    function goToNextSlide() {
+        if (index < totalSlides - visibleSlides) {
+            index++;
+        } else {
+            index = 0;
+        }
+        updateSlidePosition();
+    }
 
-            nextButton.addEventListener("click", goToNextSlide);
-            prevButton.addEventListener("click", goToPrevSlide);
+    function goToPrevSlide() {
+        if (index > 0) {
+            index--;
+        } else {
+            index = totalSlides - visibleSlides;
+        }
+        updateSlidePosition();
+    }
 
-            window.addEventListener("resize", updateSlideWidth);
-        });
+    nextButton.addEventListener("click", goToNextSlide);
+    prevButton.addEventListener("click", goToPrevSlide);
+    window.addEventListener("resize", updateSlideWidth);
+
+    updateSlideWidth();
+});
     </script>
     <script>
         $(document).ready(function() {
