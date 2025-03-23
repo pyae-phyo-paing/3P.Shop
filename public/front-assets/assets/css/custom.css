@@ -847,7 +847,7 @@ input:focus {
   .custom-slide {
     flex: 0 0 50%;
     justify-content: center;
-    display: fl;
+    display: flex;
   }
 }
 
