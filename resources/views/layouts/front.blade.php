@@ -38,7 +38,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">leosurki3698@gmail.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:leosurki3698@gmail.com">leosurki3698@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">09-789-643-507</a>
                 </div>
@@ -269,7 +269,7 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="col-12">
                         <p class="text-left text-light">
                             Copyright &copy; 2025 3P.Shop Fashion Company 
-                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">Leo Surki</a>
+                            | Designed by <a rel="sponsored" href="mailto:leosurki3698@gmail.com" target="_blank">Leo Surki</a>
                         </p>
                     </div>
                 </div>
